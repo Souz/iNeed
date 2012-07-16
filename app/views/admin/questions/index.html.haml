@@ -1,0 +1,35 @@
+/@Author = Tarek Mehrez, Nada Nasr
+/@Summary: View all questions through the passed object from the controller containing all questions (@questions), the content of each question is displayed in the table
+
+%h2 Suppliers Feedback Form
+- if !notice.nil?
+  .alert.alert-success
+    = notice
+%table.table.table-striped
+  %tr
+    %button#add_question_button.btn-primary
+      +
+    click to add a new Question
+  %tr
+    = render "new_form"
+
+-if @questions.empty?
+  %div{:style => "width:610px"}
+  .alert.alert-error
+    There are no questions
+
+-else
+  - i = 1
+  %table.table.table-striped.table-bordered
+    %thead
+      %th Question Number
+      %th Content
+
+    -@questions.each do |question|
+      %tbody
+        %td 
+          %p= i
+        %td
+          %p= question.content 
+        -i = i + 1
+

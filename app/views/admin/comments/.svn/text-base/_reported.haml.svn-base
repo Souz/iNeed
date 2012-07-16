@@ -1,0 +1,41 @@
+%h1 Reported Comments
+
+- if (@reported_comments.empty?)
+  %p There are no reported comments
+- else
+
+  =form_tag '#', :method => :get, :id => 'comments_form' do
+    %button#delete_comment.button{:type => "submit", :disabled => "disabled", :class => "btn-primary btn-large" }
+      Delete
+    %button#hide_comment.button{:type => "submit", :disabled => "disabled", :class => "btn-primary btn-large"}
+      Hide
+    %button#warn_comment.button{:type => "submit", :disabled => "disabled", :class => "btn-primary btn-large" , "data-toggle" => "modal", :href => "#commentModal"}
+      Warn commenter
+    %button#ban_comment.button{:type => "submit", :disabled => "disabled", :class => "btn-primary btn-large" , "data-toggle" => "modal", :href => "#commentModal"}
+      Ban commenter
+    %table.table.table-striped
+      %thead	
+      %tr
+        %th 
+        %th Comment
+        %th Commenter
+        %th Number of reports
+        - @reported_comments.each do |r|
+          %tr
+            %td 
+              = check_box_tag "comment_ids[]", r.id
+              %td= r.content
+              %td= r.customer.name
+              %td= r.reported_comments.length
+
+    #commentModal.modal.fade
+      .modal-header
+        %button.close{"data-dismiss" => "modal"} ×
+        %h3 Reason For Warning Or Banning
+      .modal-body
+        %h4 Please enter the reason
+        =text_field_tag :reason
+      .modal-footer
+        %a#reason_comment_button.btn.btn-primary{:href => "#"} Submit
+
+= will_paginate @reported_comments, :param_name => 'reported_comments' 

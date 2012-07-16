@@ -1,0 +1,31 @@
+= form_for @need do |f|
+  -if @need.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@need.errors.count, "error")} prohibited this need from being saved:"
+      %ul
+        - @need.errors.full_messages.each do |msg|
+          %li= msg
+  #content
+    %table.config.list
+      %tr
+        %th Location ::
+        %th Quantity Needed
+      - @need.array_of_locations.each do |x|
+        %tr
+          %td= "#{x[0]}"
+          %td= "#{x[1]}"
+
+  .form-actions
+    -if Supplier.find(current_supplier.id).needs.where(id: @need.id).exists? == false     
+      %a.button.btn.btn-primary{href: "#show"} Track
+      #show.show.fancybox.rounded.transparent-border.shadow
+      =render partial: 'form3'
+      %a.close{:href => "#"} x
+    -else
+      =form_tag("/supplier/untrack_need", :method=>'post',:multipart => true) do
+        .control-group
+          =hidden_field_tag :n_id,@need.id
+          %button.btn.btn-primary{:type => "submit_tag"} UnTrack
+      
+  = link_to 'Place a new offer', new_offer_path(:need_id => @need.id)
+

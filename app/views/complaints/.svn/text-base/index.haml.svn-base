@@ -1,0 +1,36 @@
+%h1 My Complaints
+%br
+%br
+-if supplier_signed_in?
+  -if current_supplier._type == 'Supplier'
+    %p{style:"font-size:20px;"}
+      %b= link_to 'New Complaint', new_supplier_complaint_path
+    -if @complaints.length>0
+      %table{:CELLPADDING => "4", :CELLSPACING => "3", :WIDTH => "50%"}
+        %tr
+          %th
+          %th
+          %th
+        - @complaints.each do |complaint|
+          %tr
+            %td
+              %h2
+                %b= complaint.subject
+            %td{align:'right'}
+              %h4= "submitted on: #{Get_Complaint_Date(complaint).to_formatted_s(:long_ordinal)}"
+          %tr
+            %td
+              = complaint.content
+            %td
+              = complaint.supplier_id
+          %table
+            %th
+          	
+              %b= link_to 'Problem solved, Delete!', complaint, :confirm => 'The complaint will be removed and will not be sent to the adminstrator, are you sure?', :method => :delete
+    -else
+      ="You don't have any complaints yet!"
+    %br
+  -else
+    ="You are not logged in as a Supplier, please log in again."
+-else
+  ="You are not logged in as a Supplier, please log in again."

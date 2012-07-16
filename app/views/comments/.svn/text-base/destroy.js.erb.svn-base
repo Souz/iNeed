@@ -1,0 +1,2 @@
+$("#AllComments").html("<%= escape_javascript(render(:partial => "comments/comments_partial")) %>");
+$("#new_comment")[0].reset();

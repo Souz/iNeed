@@ -1,0 +1,10 @@
+= form_for @customer_offer do |f|
+  -if @customer_offer.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@customer_offer.errors.count, "error")} prohibited this customer_offer from being saved:"
+      %ul
+        - @customer_offer.errors.full_messages.each do |msg|
+          %li= msg
+
+  .actions
+    = f.submit 'Save'

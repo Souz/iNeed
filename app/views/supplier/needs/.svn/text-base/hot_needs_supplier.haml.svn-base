@@ -1,0 +1,13 @@
+/@Author = Mirna Elbendary
+/@summary = if we have needs then we render "hot_needs" else we display
+/a message 'No hot needs'.
+
+%h3 Hot needs
+-if @needs.nil?
+  %div{:align => "center", :style => "color:#00FF00; background:yellow; font-size:40px"}
+    %Font{:color => "White", :size => "40px"}
+      %br
+      %h2 There are no hot needs at the moment. Please try again later.
+      %br
+-else
+  = render 'hot_needs'

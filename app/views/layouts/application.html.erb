@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>iNeed</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application", "rails.validations" %>
+
+  <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" %>
+  <%= csrf_meta_tag %>
+
+  <%= javascript_include_tag 'jquery', 'application' %>
+</head>
+<body>
+
+<%= yield %>
+
+</body>
+</html>

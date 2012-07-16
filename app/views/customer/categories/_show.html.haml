@@ -1,0 +1,10 @@
+%h1= 'Category "' + @cat_name + '"'
+%div.span4{:style => "height:100px;width:500px;margin-top:0px;"}
+	%table.table.table-condensed.table-striped
+		- @needs.each do |need|
+			-@need = need
+			%tr{:id => need.id}
+				=render 'needs/need_widget'
+	= will_paginate @needs
+%script
+	$('.pagination a').attr('data-remote', 'true');

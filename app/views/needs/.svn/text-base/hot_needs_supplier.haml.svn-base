@@ -1,0 +1,11 @@
+/I created a table having 7 columns,the first for the number, 2nd for the photo of need,
+/the 3rd for the name of need, 4th for the total number of needers.The last 3 columns for
+/the buttons that link to track, place offer and the show page of each need.
+/The if statement checks if there are any hot needs.In this case, it fills the table with the 
+/info of those needs, else a message is displayed: "no available hot needs now".
+
+%h3 Hot needs
+-if @needs.empty?
+  = render 'no_hot_needs'
+-else
+  = render 'hot_needs'

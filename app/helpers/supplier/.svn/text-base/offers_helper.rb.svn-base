@@ -1,0 +1,2 @@
+module Supplier::OffersHelper
+end

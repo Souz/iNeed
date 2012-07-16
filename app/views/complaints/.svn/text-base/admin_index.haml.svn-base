@@ -1,0 +1,56 @@
+%h1 Suppliers Complaints
+
+/checks if the global variable $not_checked is set to 1 which means that a button was clicked without checking boxes
+- if($not_checked == 1) 
+  %p Please choose at least one message
+  /if yes output the previous line as a warning, asking the user to check at least 1 box
+  -$not_checked = 0
+  /then setting the variable back to 0
+
+=form_tag :controller => 'complaints', :action => 'admin_index_redirect'
+/this is the line responsible for calling action admin_index_redirect in controller complaints when the tag is submitted
+/or in other words one of the buttons is clicked
+
+
+=submit_tag "Delete"
+/button Delete, when clicked (submitted) params[:commit] used in admin_index_redirect is set to Delete
+=submit_tag "mark as read"
+/button mark as read, when clicked (submitted) params[:commit] used in admin_index_redirect is set to mark as read
+=submit_tag "mark as unread" 
+/button mark as unread, when clicked (submitted) params[:commit] used in admin_index_redirect is set to mark as unread
+
+
+/table that contains the complaints
+%table.table.table-striped
+
+  %thead
+    /table head
+    %th
+    %th Supplier
+    /Column head supplier or the sender
+    %th Subject
+    /Column head complaint Subject
+    %th Content
+    /Column head complaint content
+    %th read
+    /Column head read or un read
+    %th Date
+    /Column head date of sending the message
+
+  -@allcomplaints.each do |complaint| #loop on all complaints fetched from the database passed through the controller 
+    %tbody
+      /table body
+      %td 
+        =check_box_tag "complaint_ids[]", complaint.id #check box for each entry, saves value of complaint id if checked in complaint_ids[]
+      %td
+        %p= complaint.supplier_id # the sender id for each entry
+      %td
+        %p= link_to complaint.subject, complaint # subject for each complaint as a link to be able to open it seperately
+      %td
+        %p= complaint.content #content for each entry
+      %td
+        %p= complaint.read #true->read / false-> unread for each entry
+      %td
+        %p= complaint.date #complaint date for each entry
+      %tr
+      

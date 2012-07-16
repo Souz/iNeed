@@ -1,0 +1,27 @@
+/@Author = Dalia William, Nada Nasr
+/@Summary = A page with 2 tabs "unregistered" and "registered" ,registered suppliers isthe default page
+
+.tabbable
+  %ul.nav.nav-tabs
+    - if params[:tab].nil? || params[:tab] == 'unregistered'
+      %li.active
+        %a{"data-toggle" => "tab", :href => "#unregistered"} Unregistered Suppliers
+      %li
+        %a{"data-toggle" => "tab", :href => "#registered"} Registered Suppliers
+      .tab-content
+        #unregistered.tab-pane.active
+          = render 'unregistered'
+        #registered.tab-pane
+          = render 'registered'
+    - else
+      %li
+        %a{"data-toggle" => "tab", :href => "#unregistered"} Unregistered Suppliers
+      %li.active
+        %a{"data-toggle" => "tab", :href => "#registered"} Registered Suppliers
+      .tab-content
+        #unregistered.tab-pane
+          = render 'unregistered'
+        #registered.tab-pane.active
+          = render 'registered'
+
+  

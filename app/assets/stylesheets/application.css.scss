@@ -1,0 +1,38 @@
+//@import "bootswatch/cerulean/variables"; 
+
+@import "bootstrap";
+
+body { padding-top: 65px;}
+
+@import "bootstrap-responsive";
+
+//@import "bootswatch/cerulean/bootswatch";
+
+.field_with_errors .message
+{
+	color: #D00;
+	padding-left: 5px;
+	font-size: 12px;
+}
+.pagination {
+  a, span, em {
+    padding: 0.2em 0.5em;
+    display: block;
+    float: left;
+    margin-right: 1px;
+  }
+   .disabled {
+     display: none;
+   }
+   .current {
+     font-style: normal;
+     font-weight: bold;
+     background: #2e6ab1;
+     color: white;
+     border: 9px solid #2e6ab1;
+   }
+}
+body
+{
+  background-color : #F0F0F0;
+}

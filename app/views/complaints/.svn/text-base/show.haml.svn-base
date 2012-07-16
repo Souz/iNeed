@@ -1,0 +1,17 @@
+/shows a certain message seperately
+.alert.alert-success
+  ="Your Complaint has been submitted successfully"
+%br
+%br
+%table.table.table-striped.table-bordered
+
+  %td
+    %h3 Subject:
+    %p= @complaint.subject
+    %hr{style: "clear: both;"}
+    %p= @complaint.content #shows the content of the message
+    %hr{style: "clear: both;"}
+    %h3 Sent at:
+    %p= @complaint.date
+    
+= link_to 'Back to my complaints', supplier_complaints_path

@@ -1,0 +1,7 @@
+\It is rendered if a category page is called when this category has been deleted elsewhere
+%div{:align => "center", :style => "color:#00FF00; background:green; font-size:30px"}
+  %Font{:color => "White", :size => "30px"}
+    %br
+    %p This category does not exist
+    %br
+

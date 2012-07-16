@@ -1,0 +1,16 @@
+/@Author = Tarek Mehrez
+/@Summary a single complaint is passed from the controller in the object @complaint, it's displayed with it's sender, subject, content & date. Finally, there's a link to go back to the complaints' page
+%br
+%br
+%h3=@complaint.supplier.name
+%table.table.table-striped.table-bordered
+
+  %td
+    %h4 Subject:
+    %p= @complaint.subject
+    %hr{style: "clear: both;"}
+    %p= @complaint.content #shows the content of the message
+    %hr{style: "clear: both;"}
+    %h4 Sent at:
+    %p= @complaint.date
+= link_to 'Back to complaints', admin_complaints_path

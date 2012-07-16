@@ -1,0 +1,101 @@
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/2616/trunk/iNeed/app/helpers
+END
+admin_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/1280/trunk/iNeed/app/helpers/admin_helper.rb
+END
+application_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/2569/trunk/iNeed/app/helpers/application_helper.rb
+END
+comments_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/480/trunk/iNeed/app/helpers/comments_helper.rb
+END
+customers_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/467/trunk/iNeed/app/helpers/customers_helper.rb
+END
+transactions_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/467/trunk/iNeed/app/helpers/transactions_helper.rb
+END
+authentications_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/2208/trunk/iNeed/app/helpers/authentications_helper.rb
+END
+needs_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/467/trunk/iNeed/app/helpers/needs_helper.rb
+END
+access_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/467/trunk/iNeed/app/helpers/access_helper.rb
+END
+systems_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/467/trunk/iNeed/app/helpers/systems_helper.rb
+END
+admins_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/467/trunk/iNeed/app/helpers/admins_helper.rb
+END
+feedback_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/467/trunk/iNeed/app/helpers/feedback_helper.rb
+END
+users_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/467/trunk/iNeed/app/helpers/users_helper.rb
+END
+autocomplete_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/2616/trunk/iNeed/app/helpers/autocomplete_helper.rb
+END
+complaints_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/567/trunk/iNeed/app/helpers/complaints_helper.rb
+END
+updates_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/467/trunk/iNeed/app/helpers/updates_helper.rb
+END
+supplier_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/1307/trunk/iNeed/app/helpers/supplier_helper.rb
+END

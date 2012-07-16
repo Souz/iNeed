@@ -1,0 +1,16 @@
+#desc{:style => "height:450px;width:450px;float:left;background:#E8E8E8;overflow:auto;"}
+	%p{:style => "margin-left:20px;margin-top:20px;"}
+		=image_tag @need.photo.url(:original), :width =>'150px',:height =>'200px'
+	%h3{:style => "margin-left:20px;"}
+		= "Description: "
+	%b{:style => "margin-left:20px;"}
+		= @need.description
+		/@Author = Yousra Hazem
+		/@summary = displays the quantity needed on this need in different locations
+		%div{:style => "margin-left:20px; margin-right:20px;"}
+			%table.table.table-striped
+				%tbody
+					- @need.num_of_needers_in_locations.each_key do |location|
+						-if @need.num_of_needers_in_locations[location] > 0
+							%tr
+								%td #{@need.num_of_needers_in_locations[location]} needers in #{location}

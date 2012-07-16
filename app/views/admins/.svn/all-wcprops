@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/2527/trunk/iNeed/app/views/admins
+END
+reported.html.haml
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/2503/trunk/iNeed/app/views/admins/reported.html.haml
+END
+index.haml
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/2502/trunk/iNeed/app/views/admins/index.haml
+END
+addCategory.haml
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/467/trunk/iNeed/app/views/admins/addCategory.haml
+END

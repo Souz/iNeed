@@ -1,0 +1,23 @@
+%p#notice= notice
+
+%h1 Listing transactions
+
+%table
+  %tr
+    %th Done
+    %th Code
+    %th
+    %th
+    %th
+
+  - @transactions.each do |transaction|
+    %tr
+      %td= transaction.done
+      %td= transaction.id
+      %td= link_to 'Show', transaction
+      /%td= link_to 'Edit', edit_transaction_path(transaction)
+      %td= link_to 'cancel transaction', transaction, :confirm => 'Are you sure you want to cancel this Transaction?', :method => :delete
+
+%br
+
+= link_to 'New Transaction', new_transaction_path

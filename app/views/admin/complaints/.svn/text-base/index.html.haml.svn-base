@@ -1,0 +1,47 @@
+/@Author = Tarek Mehrez
+/@Summary: all complaints are passed through object @complaints, checks if its empty it displays an alert, otherwise it views all complaints in a table, with the possibility to check some complaints and delete them, open them, mark them as read or unread. The page is paginated
+%h2 Suppliers Complaints
+
+-if(@complaints.empty?)
+  %div{:style => "width:610px"}
+  .alert.alert-error
+    There are no complaints
+
+
+-else
+  %script{:src => "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", :type => "text/javascript"}
+
+  %button#delete_comp.button{:type => "submit"} Delete
+  %button#read.button{:type => "submit"} Mark as read
+  %button#unread.button{:type => "submit"} Mark as unread
+  %br
+
+  = form_tag '#', :method => :get, :id => 'complaints_form' do
+
+    %table.table.table-striped
+      %thead
+        %th
+        %th Supplier
+        %th Subject
+        %th Content
+        %th Date
+        -@complaints.each do |complaint| 
+          -if (complaint.read)
+            %tr
+              %td 
+                = check_box_tag 'complaint_ids[]', complaint.id
+                %td= complaint.supplier.name
+                %td=link_to complaint.subject, "/admin/complaints/#{complaint.id}"                  
+                %td= complaint.content
+                %td= complaint.date
+          -else  
+            %tr{:bgcolor => "#B0E0E6"}
+          
+              %td 
+                = check_box_tag 'complaint_ids[]', complaint.id
+                %td= complaint.supplier.name
+                %td=link_to complaint.subject, "/admin/complaints/#{complaint.id}"                    
+                %td= complaint.content
+                %td= complaint.date
+
+= will_paginate @complaints

@@ -1,0 +1,19 @@
+%h1
+  login
+.login
+  = form_tag (:action => 'attempt_login') do
+    %table
+      %tr
+        %td= label_tag(:username)
+        %td= password_field_tag(:password)
+      %tr
+        %td  
+        %td= submit_tag("Log In")
+
+-  @Users.each do |User|
+  %p{style: "float: right;"}
+    %b= link_to 'facebook', "/auth/facebook"
+ 
+    
+  %br
+

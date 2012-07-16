@@ -1,0 +1,20 @@
+/@Author = Mirna elbendary
+/ summary = 2 text feilds that take the input number and location
+%p#notice= notice
+=link_to 'Back', hot_needs_supplier_supplier_needs_path
+%br
+%h3 Notify me when
+%br
+= form_tag(controller: 'supplier/needs', action: 'notify_action', :need_id => @need.id, :supplier_id => @supplier.id) do
+  %h1=label_tag :number_of_users_reaches
+  =text_field_tag :number_users, params[:number_users]
+
+  =label_tag :location
+  =text_field_tag :location, params[:location]
+  %br
+  %br
+  =submit_tag 'notify me'
+/- redirect_to supplier_hot_needs_supplier_path, :need_id => @need.id, :supplier_id => @supplier.id
+
+
+

@@ -1,0 +1,15 @@
+<html>
+
+<head>
+<%= @user.name %>,
+</head>
+
+<body>
+
+<p>The offer on need 
+<%= @offer.need.name %> 
+ you subscribed on is now activated ! :) </p>
+
+ 
+</body>
+</html>

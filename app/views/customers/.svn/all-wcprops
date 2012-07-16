@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/1269/trunk/iNeed/app/views/customers
+END
+_form.html.haml
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/467/trunk/iNeed/app/views/customers/_form.html.haml
+END
+edit.html.haml
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/467/trunk/iNeed/app/views/customers/edit.html.haml
+END
+show.html.haml
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/467/trunk/iNeed/app/views/customers/show.html.haml
+END
+new.html.haml
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/467/trunk/iNeed/app/views/customers/new.html.haml
+END
+customer_profile.haml
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/1026/trunk/iNeed/app/views/customers/customer_profile.haml
+END
+index.html.haml
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/467/trunk/iNeed/app/views/customers/index.html.haml
+END

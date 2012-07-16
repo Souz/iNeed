@@ -1,0 +1,45 @@
+/views the banned customers
+%h2 Banned Customers
+%script{:src => "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", :type => "text/javascript"}
+
+= form_tag '#', :method => :get, :id => 'customers_form' do
+  %button#email.button{:type => "submit"}
+    Email
+  %button#unban.button{:type => "submit"}
+    Unban
+  /table that contains the banned customers
+  %table.table.table-striped
+	
+    %thead
+      /table head
+      %th
+			
+			
+      %th Name
+      /column head, banned customer's name
+      %th Email
+      /column head, banned customer's name
+      %th Reason For Banning
+      /column head, banned customer's reason for banning
+    %tbody	
+      /table body
+
+      -if @banned_customers.empty?
+        /checks if number of banned customers fetched from the database, passed from controller is zero 
+        %td There are no banned customers
+        /if yes tells the admin, there are no banned customers
+
+      -else
+        /otherwise, start looping on all entries
+        -@banned_customers.each do |banned_customer|
+          %td 
+            = check_box_tag "user_ids[]", banned_customer.id #check box for each entry, saves value of customer id if checked, in customer_ids[]
+          %td
+            %p= banned_customer.name #customer's name for each entry
+          %td
+            %p= banned_customer.email #customer's email for each entry entry
+          %td
+            %p= banned_customer.reason_for_warning_or_banning #customer's reason for banning for each entry
+          %tr
+				
+= will_paginate @banned_customers

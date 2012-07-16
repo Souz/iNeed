@@ -1,0 +1,29 @@
+/@author: Nourhan Azab
+/@summary: this displays the log in form for admins.
+.navbar.navbar-fixed-top
+  .navbar-inner
+    .container-fluid
+      %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
+      %a.brand{:href => "#"} iNeed
+%div.offset4.span4
+  %h2 Welcome Back!
+  -if current_customer.nil? && current_supplier.nil? && current_admin.nil?
+    %table.table.table-condensed
+      %tr
+        %td
+          %br
+          %h3 Admins Portal
+          = form_tag admin_session_path do
+            =label_tag 'email'
+            = text_field_tag 'admin[email]'
+            %br
+            =label_tag 'password'
+            = password_field_tag 'admin[password]'
+            %br
+            = check_box_tag 'admin[remember_me]'
+            = label_tag 'admin[remember_me]', 'Remember me'
+            %button.btn.btn-success Sign in
+  -else
+    %div.span4.offset2
+      .alert.alert-error
+        = "You are already logged in to iNeed!"

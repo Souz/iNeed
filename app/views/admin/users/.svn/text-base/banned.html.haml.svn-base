@@ -1,0 +1,30 @@
+/@Author: Tarek Mehrez
+/@Summary: 2 Tabs one for banned customers and the other for banned suppliers if the admin pressed customers we check if there are no banned customers, we display an alert message , otherwise we render to the partial having a table with all banned customers. Same happens for suppliers
+%ul.nav.nav-tabs
+  %li
+    %a{"data-toggle" => "tab", :href => "#customers"} Customers
+  %li
+    %a{"data-toggle" => "tab", :href => "#suppliers"} Suppliers
+
+.tab-content
+  #customers.tab-pane.active 
+    %h2 Banned Customers
+    -@banned_users = @banned_customers
+    -if @banned_users.empty?
+      %div{:style => "width:610px"}
+      .alert.alert-error
+        There are no banned customers
+    -else
+      =render 'table'
+      = will_paginate @banned_customers, :param_name => 'banned_customers' 
+    
+  #suppliers.tab-pane
+    %h2 Banned Suppliers
+    -@banned_users = @banned_suppliers
+    -if @banned_users.empty?
+      %div{:style => "width:610px"}
+      .alert.alert-error
+        There are no banned suppliers
+    -else
+      =render 'table'
+      = will_paginate @banned_suppliers, :param_name => 'banned_suppliers' 

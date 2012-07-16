@@ -1,0 +1,46 @@
+/@Author: Yousra Hazem
+/@summary: renders category page with links to subcategories or subneeds. subcategories have the option of track if untracked or untrack if tracked. 
+/@paramName: tracked => List of tracked Categories by the current_supplier
+/@paramName: category => The category itself
+/@paramName: category => The category's children
+-if flash[:notice]
+  %div{:style => "width:610px"}
+    .alert.alert-success
+      =h flash[:notice]
+-elsif flash[:notice]
+  %div{:style => "width:610px"}
+    .alert-message.error
+      =h flash[:error]
+%div{:style => "height:70px;"}
+  %table
+    %tr
+      %td{:width => "420px"}
+        %h1= @category.name
+      - if !@tracked.include?(@category)
+        %td= button_to "Track" ,{:action => "track", :id => @category.id, :current_id => @category.id, :method => :post}, :class=>"btn btn-success btn-small"
+      - else
+        %td= button_to "UnTrack", {:action =>  "untrack",:id => @category.id, :current_id => @category.id, :method => :post}, :class=>"btn btn-warning btn-small"
+- if ! @category.root?
+  %p 
+    Back to
+    = link_to @category.parent.name, :controller => "supplier/categories", :action => "show", :id => @category.parent.id
+- if ! @category.leaf?
+  %table.table.table-striped
+    - @children.each do |child| 
+      %tr
+        %td
+          = link_to child.name, :controller => 'supplier/categories', :action => "show", :id => child.id
+        %td
+          %div{:id => "#{child.name}"}
+            - if  @tracked.include?(child)
+              = link_to "UnTrack",  :action =>  "untrack",:id => child.id, :current_id => @category.id, :method => :post 
+            - else
+              = link_to "Track", :action =>  "track",:id => child.id, :current_id => @category.id, :method => :post 
+
+- else
+  %table.table.table-striped
+    - @category.needs.each do |need|
+      -if !need.deleted
+        %tr
+          %td
+            = link_to need.name, :controller => "needs", :action => "show", :id => need.id

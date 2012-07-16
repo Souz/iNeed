@@ -1,0 +1,22 @@
+/@Author: Nada Nasr
+/@Summary: contains all unregistered suppliers where the admin can approve or reject any of them
+
+%h1 Unregistered Suppliers
+%br
+- if @unregistered_suppliers.empty?
+	%div{:style => "width:290px"}
+	.alert.alert-error
+		No pending supplier registrations exist
+- else
+	%table.table.table-striped
+		%thead
+		%tr
+			%th Supplier Name
+			%th
+			%th
+			- @unregistered_suppliers.each do |s|
+				%tr
+					%td= s.name
+					%td= link_to "approve", :action => 'approve', :supplier_id => s.id 
+					%td= link_to "reject",:action => 'reject', :supplier_id => s.id 
+	= will_paginate @unregistered_suppliers, :param_name => 'unregistered_suppliers'

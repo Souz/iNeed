@@ -1,0 +1,8 @@
+/@Author = Mirna ElBendary
+/@summary = the suppier enters the code, in the text field
+%p#notice= notice
+
+= form_tag(insert_code_path, :method => 'get') do 
+  =label_tag :code_value
+  =text_field_tag :code, params[:code]
+  =submit_tag 'insert'

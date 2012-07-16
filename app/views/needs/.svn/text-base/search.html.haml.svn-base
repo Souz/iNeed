@@ -1,0 +1,51 @@
+/@Author = "Doha"
+/@Controller: NeedsController
+/@action: sorting
+/@author: Amir Emad
+/@Summary: This view contains a form that constructs a drop down list for sorting the search results choices.
+/It aslo contains the table at which the sorted needs and offers appears.
+/@Button: "Sort", in the from is used to submit it, to sends to the controller's action which choice from the list was choosen
+:css
+	input { position: relative; }
+	#filter_btn { margin-left: 330px; top: 0px; width: 150px; } 
+/ the following form_tag consists of a drop list with different options for the user to choose and select from to sort his/her search.z
+=form_tag("/needs/sorting", :need_id => @need_id,:remote => true) do
+	= hidden_field_tag :need_name, @query
+	= hidden_field_tag params[:need_id]
+	= select_tag("sorting_choice", options_for_select(["Ascending", "Descending", "Price_high_to_low", "Price_low_to_high", "Most Needed"]))
+	= submit_tag("Sort")
+/ lists all needs with their images and total_needers
+-if flash[:notice]
+	.alert.alert-error{:style => "width:400px"}
+		= flash[:notice] 
+-if(!@needs.empty?)	
+	%h1= 'Search results for "' + @query + '"'
+-else
+	%h1 No Matching Results
+/form_tag for search aided by autocomplete
+#filter.modal.fade
+	.modal-header
+		%button.close{"data-dismiss" => "modal"} ×
+		%h3 Filter Results
+	.modal-body
+		= form_tag filter_needs_path,:method => 'get',:id => 'filter_form',:remote => true do
+			= hidden_field_tag :need_name, @query
+			= select_tag :category_name, options_for_select(Category.get_leaf_categories), :prompt => 'Select Category'
+			= label_tag 'Price Range'
+			= text_field_tag :low_bound
+			= text_field_tag :high_bound
+			.modal-footer
+				= submit_tag "Filter",:class => 'btn-primary',:onclick => "$('#filter').modal('hide')"
+
+%div.span4{:style => "height:100px;width:500px;margin-top:0px;"}
+	%table.table.table-condensed.table-striped
+		-if !@needs.empty?
+			%a.btn{"data-toggle" => "modal", :href => "#filter",:id => 'filter_btn',:class=>"btn-primary"} Filter Results
+		- @needs.each do |need|
+			-@need = need
+			%tr{:id => need.id}
+				=render 'need_widget'
+		
+	= will_paginate @needs
+%script
+	$('.pagination a').attr('data-remote', 'true');

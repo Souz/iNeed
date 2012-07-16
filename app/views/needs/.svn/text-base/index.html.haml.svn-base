@@ -1,0 +1,35 @@
+/@author: Amir Emad
+/@summary: Thats a view to show all the need in the system.
+:css
+	input { position: relative; }
+	#filter_btn { margin-left: 330px; top: 0px; width: 150px; } 
+
+/ lists all needs with their images and total_needers	
+-if flash[:notice]
+	.alert.alert-error{:style => "width:400px"}
+		= flash[:notice] 
+%h1 All Needs
+#filter.modal.fade
+	.modal-header
+		%button.close{"data-dismiss" => "modal"} ×
+		%h3 Filter Results
+	.modal-body
+		= form_tag filter_needs_path,:method => 'get',:id => 'filter_form',:remote => true do
+			= hidden_field_tag :need_name, @query
+			= select_tag :category_name, options_for_select(Category.get_leaf_categories), :prompt => 'Select Category'
+			= label_tag 'Price Range'
+			= text_field_tag :low_bound
+			= text_field_tag :high_bound
+			.modal-footer
+				= submit_tag "Filter",:class => 'btn-primary',:onclick => "$('#filter').modal('hide')"
+%div.span4{:style => "height:100px;width:500px;margin-top:0px;"}
+	%table.table.table-condensed.table-striped
+		%a.btn{"data-toggle" => "modal", :href => "#filter",:id => 'filter_btn',:class=>"btn-primary"} Filter Results
+		- @needs.each do |need|
+			-@need = need
+			%tr{:id => need.id}
+				=render 'need_widget'
+	= will_paginate @needs
+%script
+	$('.pagination a').attr('data-remote', 'true');
+

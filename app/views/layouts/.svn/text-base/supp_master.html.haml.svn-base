@@ -1,0 +1,184 @@
+/ @Author= Yousra Hazem
+/ @Author: Amir Emad
+/ @Summary= Displays the Master Page for the Supplier 
+!!! Strict
+%html{:xmlns => "http://www.w3.org/1999/xhtml"}
+  %head
+    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}/
+    %meta{:content => "all", :name => "robots"}/
+    %title iNeed
+    /Scripts are added for a javascript side menu plugin 
+    /%link{:href => "css/dcaccordion.css", :rel => "stylesheet", :type => "text/css"}/
+    %script{:src => "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", :type => "text/javascript"}
+      $(document).ready(function($){
+      $('#accordion-5').dcAccordion({
+      eventType: 'hover',
+      autoClose: false,
+      saveState: true,
+      disableLink: false,
+      menuClose: true,
+      speed: 'fast',
+      showCount: true
+      });
+      });
+    %script{:src => "/assets/jquery.cookie.js", :type => "text/javascript"}
+      $(document).ready(function($){
+      $('#accordion-5').dcAccordion({
+      eventType: 'hover',
+      autoClose: false,
+      saveState: true,
+      disableLink: false,
+      menuClose: true,
+      speed: 'fast',
+      showCount: true
+      });
+      });
+    %script{:src => "/assets/jquery.hoverIntent.minified.js", :type => "text/javascript"}
+      $(document).ready(function($){
+      $('#accordion-5').dcAccordion({
+      eventType: 'hover',
+      autoClose: false,
+      saveState: true,
+      disableLink: false,
+      menuClose: true,
+      speed: 'fast',
+      showCount: true
+      });
+      });
+    %script{:src => "/assets/jquery.dcjqaccordion.2.7.min.js", :type => "text/javascript"}
+      $(document).ready(function($){
+      $('#accordion-5').dcAccordion({
+      eventType: 'hover',
+      autoClose: false,
+      saveState: true,
+      disableLink: false,
+      menuClose: true,
+      speed: 'fast',
+      showCount: true
+      });
+      });
+    :javascript
+      $(document).ready(function($){
+                $('#accordion-5').dcAccordion({
+                  eventType: 'hover',
+                  autoClose: false,
+                  saveState: true,
+                  disableLink: false,
+                  menuClose: true,
+                  speed: 'fast',
+                  showCount: true
+                });
+      });
+    / %link{:href => "css/skins/blue.css", :rel => "stylesheet", :type => "text/css"}/
+    / %link{:href => "css/skins/graphite.css", :rel => "stylesheet", :type => "text/css"}/
+    / %link{:href => "css/skins/grey.css", :rel => "stylesheet", :type => "text/css"}/
+    :css
+      input { position: relative; }
+      #need_name_auto {top: 7px; width: 150px; }  
+      #need_search { margin-left: 350px; top: 0px;}  
+    = stylesheet_link_tag "application", "jquery-ui",'icons'
+    = javascript_include_tag "application"  
+  .navbar.navbar-fixed-top
+    .navbar-inner
+      .container-fluid
+        /logo at top-left
+        %a.brand{:href => "/supplier/offers",:style => "font-weight:bold;font-size:2em;margin-left:0px;"} iNeed
+        -if supplier_signed_in? 
+          / drop down containing link to sign-out
+          .btn-group.pull-right
+            %a.btn.dropdown-toggle{"data-toggle" => "dropdown", :href => "#",:style => "width:145px;margin-top:8px;"}
+              %i.icon-user
+              = current_supplier.name
+              %span.caret
+            %ul.dropdown-menu
+              %li
+                %a{:href => "/suppliers/show"} Profile   
+              %li.divider
+              %li
+                =link_to "Sign out", destroy_customer_session_path, :method => :delete
+          -if !current_supplier.banned? && current_supplier.approved?
+            / top navigation bar, with the active tab highlighted
+            .nav-collapse
+              %ul.nav
+                - if url_for == "supplier/needs/hot_needs_supplier"
+                  %li.active
+                    %a{:href => "/supplier/needs/hot_needs_supplier"} Hot Needs
+                - else
+                  %li
+                    %a{:href => "/supplier/needs/hot_needs_supplier"} Hot Needs
+                - if url_for == "needs"
+                  %li.active
+                    %a{:href => "/needs"} All Needs
+                - else
+                  %li
+                    %a{:href => "/needs"} All Needs
+                - if url_for == "supplier/offers"
+                  %li.active
+                    %a{:href => "/supplier/offers"} My Offers
+                - else
+                  %li
+                    %a{:href => "/supplier/offers"} My Offers
+                - if url_for == "supplier/needs"
+                  %li.active
+                    %a{:href => "/supplier/needs"} Tracked Needs
+                - else
+                  %li
+                    %a{:href => "/supplier/needs"} Tracked Needs
+                - if url_for == "supplier/complaints"
+                  %li.active
+                    %a{:href => "/supplier/complaints"} Complaints
+                - else
+                  %li
+                    %a{:href => "/supplier/complaints"} Complaints
+              /Author: Amir Emad
+              /search form_tag aided by autocomplete
+              = form_tag search_needs_path,:id => 'need_search', :method => 'get' do
+                = text_field_tag :need_name_auto, params[:need_name_auto],:class => 'search', :style => "width:30%; height:20px;",:placeholder => 'Search...'
+                = hidden_field_tag :need_id
+                = hidden_field_tag :autocomplete_type
+                -if customer_signed_in?
+                  = hidden_field_tag :current_user, 'customer/'
+                -else
+                  -if supplier_signed_in?
+                    = hidden_field_tag :current_user, 'supplier/'
+                  -else
+                    = hidden_field_tag :current_user, '' 
+                %button.btn{:type => 'submit',:name => 'commit',:id => 'srch-btn'}
+                  %i.icon-search     
+  / /.nav-collapse  
+  %body
+    -if supplier_signed_in?
+      -if !current_supplier.banned? && current_supplier.approved?
+        / side menu including javascript with expand Categories on hover 
+        .row-fluid
+          .span3
+            .well.sidebar-nav
+              %ul#accordion-5.nav.nav-list
+                %li
+                  %a#1{"data-toggle" => "tab1", :href => "/supplier/needs/hot_needs_supplier"} Home
+                %li
+                  %a#2{"data-toggle" => "tab2", :href => "#"} Profile
+                %li
+                  %a{:href => "#"} Categories
+                  = display_categories
+                %li
+                  %a#3{"data-toggle" => "tab3", :href => "/updates/"} Updates
+          #content.span9
+            =yield
+            
+      -if current_supplier.banned?
+        %div.span4.offset4
+          .alert.alert-error
+            = "This account has been banned!"
+            -if !current_supplier.reason_for_warning_or_banning.nil?
+              =" Reason" + current_supplier.reason_for_warning_or_banning
+      -if !current_supplier.approved?
+        %div.span4.offset4
+          .alert.alert-error
+            = "This account has not been approved yet!"
+    -else
+      %div.span4.offset4
+        .alert.alert-error
+          = "You have to be logged in to fully view this page!"
+      =link_to "Login Now!",home_index_path
+

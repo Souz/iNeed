@@ -1,0 +1,167 @@
+/ @Author= Yousra Hazem
+/ @Author: Amir Emad
+/ @Summary= Displays the Master Page for the Customer
+!!! Strict
+%html{:xmlns => "http://www.w3.org/1999/xhtml"}
+  %head
+    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}/
+    %meta{:content => "all", :name => "robots"}/
+    %title iNeed
+
+    /%link{:href => "css/dcaccordion.css", :rel => "stylesheet", :type => "text/css"}/
+    %script{:src => "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", :type => "text/javascript"}
+      $(document).ready(function($){
+      $('#accordion-5').dcAccordion({
+      eventType: 'hover',
+      autoClose: false,
+      saveState: true,
+      disableLink: true,
+      menuClose: true,
+      speed: 'fast',
+      showCount: true
+      });
+      });
+    %script{:src => "/assets/jquery.cookie.js", :type => "text/javascript"}
+      $(document).ready(function($){
+      $('#accordion-5').dcAccordion({
+      eventType: 'hover',
+      autoClose: false,
+      saveState: true,
+      disableLink: true,
+      menuClose: true,
+      speed: 'fast',
+      showCount: true
+      });
+      });
+    %script{:src => "/assets/jquery.hoverIntent.minified.js", :type => "text/javascript"}
+      $(document).ready(function($){
+      $('#accordion-5').dcAccordion({
+      eventType: 'hover',
+      autoClose: false,
+      saveState: true,
+      disableLink: true,
+      menuClose: true,
+      speed: 'fast',
+      showCount: true
+      });
+      });
+    %script{:src => "/assets/jquery.dcjqaccordion.2.7.min.js", :type => "text/javascript"}
+      $(document).ready(function($){
+      $('#accordion-5').dcAccordion({
+      eventType: 'hover',
+      autoClose: false,
+      saveState: true,
+      disableLink: true,
+      menuClose: true,
+      speed: 'fast',
+      showCount: true
+      });
+      });
+    :javascript
+      $(document).ready(function($){
+                $('#accordion-5').dcAccordion({
+                  eventType: 'hover',
+                  autoClose: false,
+                  saveState: true,
+                  disableLink: true,
+                  menuClose: true,
+                  speed: 'fast',
+                  showCount: true
+                });
+      });
+    / %link{:href => "css/skins/blue.css", :rel => "stylesheet", :type => "text/css"}/
+    / %link{:href => "css/skins/graphite.css", :rel => "stylesheet", :type => "text/css"}/
+    / %link{:href => "css/skins/grey.css", :rel => "stylesheet", :type => "text/css"}/
+    :css
+      input { position: relative; }
+      #need_name_auto {top: 7px;width:50%;}  
+      #need_search { margin-left: 310px; margin-top: 4px;} 
+    = stylesheet_link_tag "application", "jquery-ui",'icons'
+    = javascript_include_tag "application"  
+  .navbar.navbar-fixed-top
+    .navbar-inner
+      .container-fluid
+        /logo at top-left
+        %a.brand{:href => "/customer/needs/my_needs",:style => "font-weight:bold;font-size:2em;margin-left:50px;"} iNeed
+        -if customer_signed_in?
+          / drop down containing link to sign-out
+          .btn-group.pull-right{:style => 'margin-top:4px;'}
+            %a.btn.dropdown-toggle{"data-toggle" => "dropdown", :href => "#",:style => "width:145px;margin-top:8px;"}
+              %i.icon-user
+              = current_customer.name
+              %span.caret
+            %ul.dropdown-menu
+              %li
+                %a{:href => "/authentications"} My Accounts
+              %li.divider
+              %li
+                =link_to "Sign out", destroy_customer_session_path, :method => :delete
+        = form_tag search_needs_path,:id => 'need_search', :method => 'get' do
+          = text_field_tag :need_name_auto, params[:need_name_auto],:class => 'search', :style => "height:20px;",:placeholder => 'Search...'
+          = hidden_field_tag :need_id
+          = hidden_field_tag :autocomplete_type
+          -if customer_signed_in?
+            = hidden_field_tag :current_user, 'customer/'
+          -else
+            -if supplier_signed_in?
+              = hidden_field_tag :current_user, 'supplier/'
+            -else
+              = hidden_field_tag :current_user, '' 
+          %button.btn{:type => 'submit',:name => 'commit',:id => 'srch-btn'}
+            %i.icon-search 
+                  
+  %body
+    /Author: Amir Emad
+    /search form_tag aided by autocomplete
+  -if customer_signed_in?
+    -if !current_customer.banned?
+      .row-fluid
+        .span3
+          .well.sidebar-nav
+            / side menu with links to different parts of the page
+            %ul.nav.nav-pills.nav-stacked
+              - if url_for == "/customer/needs/my_needs"
+                %li.active
+                  %a#1{"data-toggle" => "tab1", :href => "/customer/needs/my_needs/"} My Needs
+              - else
+                %li
+                  %a#1{"data-toggle" => "tab1", :href => "/customer/needs/my_needs/"} My Needs
+              - if url_for == "#2"
+                %li.active
+                  %a#1{"data-toggle" => "tab2", :href => "#2"} Profile
+              - else
+                %li
+                  %a#2{"data-toggle" => "tab2", :href => "#2"} Profile
+              - if url_for == "/updates"
+                %li.active
+                  %a#1{"data-toggle" => "tab3", :href => "/updates/"} Updates
+              - else
+                %li
+                  %a#3{"data-toggle" => "tab3", :href => "/updates/"} Updates
+              - if url_for == "/needs"
+                %li.active
+                  %a#1{"data-toggle" => "tab1", :href => "/needs/"} All Needs
+              - else
+                %li
+                  %a#1{"data-toggle" => "tab1", :href => "/needs/"} All Needs
+              / - if url_for == "/needs/new"
+              /   %li.active
+              /     %a#1{"data-toggle" => "tab4", :href => "/needs/new/"} New Need
+              / - else
+              /   %li
+              /     %a#4{"data-toggle" => "tab4", :href => "/needs/new/"} New Need
+          %div{:style => "padding-left:6em"}
+            = button_to "+ new need", new_need_path, :class => "btn btn-primary btn-large", :style => "padding:0.5em;font-size:26px", :method => :get
+        #content.span9
+          = yield
+    -else
+      %div.span4.offset4
+        .alert.alert-error
+          = "This account has been banned!"
+  -else
+    %div.span5.offset4
+      .alert.alert-error
+        = "You have to be logged in to fully view this page!"
+        =link_to "Login Now!",home_index_path
+    #content.span9
+      = yield

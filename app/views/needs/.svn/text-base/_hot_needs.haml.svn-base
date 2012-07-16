@@ -1,0 +1,30 @@
+/%h3 Hot needs
+-i = 1
+
+%table.table.table-striped
+  %thead
+    %tr
+      /%th
+      /%th
+      /%th Hot Need Name
+      /%th Number of Needers
+      /%th
+
+    -@needs.each do |need|
+      /%td= i
+      %tr
+        %td= i
+        %td=image_tag (Need.find(need.id)).photo.url(:normal)
+        %td
+          %h3=need.name
+          %br
+          %b= 'Total Needers: '+need.total_needers.to_s
+        %td
+          %b= link_to 'Show need', need
+          %br
+          /%b= link_to 'Track need', track_need_path(:need_id => @need.id)
+          /%br
+          /%b= link_to 'Place a new offer', new_offer_path(:need_id => @need.id)
+
+      %tr
+

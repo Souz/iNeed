@@ -1,0 +1,24 @@
+/@Author: Mohamed Osama
+/@summary:  A page with 2 tabs "comments" and "needs" ,reported needs is the default page
+.tabbable
+  %ul.nav.nav-tabs
+    - if params[:tab].nil? || params[:tab] == 'needs'
+      %li.active
+        %a{"data-toggle" => "tab", :href => "#needs"} Needs
+      %li
+        %a{"data-toggle" => "tab", :href => "#comments"} Comments
+      .tab-content
+        #needs.tab-pane.active
+          = render 'admin/needs/reported'
+        #comments.tab-pane
+          = render 'admin/comments/reported'
+    - else
+      %li
+        %a{"data-toggle" => "tab", :href => "#needs"} Needs
+      %li.active
+        %a{"data-toggle" => "tab", :href => "#comments"} Comments
+      .tab-content
+        #needs.tab-pane
+          = render 'admin/needs/reported'
+        #comments.tab-pane.active
+          = render 'admin/comments/reported'

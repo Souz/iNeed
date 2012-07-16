@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/2403/trunk/iNeed/app/views/user_mailer
+END
+deleted_offer_need_email.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/2403/trunk/iNeed/app/views/user_mailer/deleted_offer_need_email.html.erb
+END
+activation_email_customer.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/2403/trunk/iNeed/app/views/user_mailer/activation_email_customer.html.erb
+END
+digest_email_supplier.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/2403/trunk/iNeed/app/views/user_mailer/digest_email_supplier.html.erb
+END
+banned_supplier_email.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/2310/trunk/iNeed/app/views/user_mailer/banned_supplier_email.html.erb
+END
+reject_email.text.erb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/1611/trunk/iNeed/app/views/user_mailer/reject_email.text.erb
+END
+activation_email_supplier.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/2403/trunk/iNeed/app/views/user_mailer/activation_email_supplier.html.erb
+END
+tracked_need_email.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/2403/trunk/iNeed/app/views/user_mailer/tracked_need_email.html.erb
+END
+approve_email.text.erb
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/1611/trunk/iNeed/app/views/user_mailer/approve_email.text.erb
+END
+subscribed_email.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/2403/trunk/iNeed/app/views/user_mailer/subscribed_email.html.erb
+END
+deleted_offer_email.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/2403/trunk/iNeed/app/views/user_mailer/deleted_offer_email.html.erb
+END
+expired_email.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/2403/trunk/iNeed/app/views/user_mailer/expired_email.html.erb
+END
+digest_mail.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/2005/trunk/iNeed/app/views/user_mailer/digest_mail.html.erb
+END
+banning_mail.text.erb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/1611/trunk/iNeed/app/views/user_mailer/banning_mail.text.erb
+END

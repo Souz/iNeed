@@ -1,0 +1,66 @@
+/@Author; Nourhan Aloush
+/@Controller: offers
+/@action: new
+/@Summary: This is the form of the new offer
+/ => it takes the inputs of all the attributes and send them to the controller to create an offer
+/@Buttons:	1. Proceed => submits the values and calls create
+/			=> after the offer is created it redirects to the show page of the offer
+/			2. Clear => This clears all the fields to start again
+
+#flash
+	%div{:style => "width:400px"}
+		- if flash[:notice]
+			.alert.alert-success
+				=flash[:notice]
+		- if flash[:error]
+			.alert.alert-error
+				=flash[:error]
+        
+%body
+=form_for @offer, :as => :offer,:url => {action: "create", :need_id => params[:need_id]}, :html => { :class => "form-inline", multipart:  true}, :validate => true do |o| 
+	-if o.error_messages.length != 0  
+		%div{:style => "width:610px"}
+			.alert.alert-error
+				=o.error_messages
+	.control-group
+		.controls
+			=o.label 'Quantity'
+			.control-group-error
+			.input
+				=o.text_field 'quantity'
+				%p.help-block Enter the quantity needed
+		.controls
+		.controls
+			=o.label 'Min quantity'
+			.input
+				=o.text_field 'min_quantity'
+				%p.help-block Enter min quantity accepted to complete the offer
+		.controls
+		.controls
+			=o.label 'Price'
+			.input
+				=o.text_field 'price'
+				%p.help-block Enter the price
+		.controls
+		.controls
+			=o.label 'Expiry Date'
+			.input
+				=o.text_field 'expiry_date'
+				%p.help-block Enter the expiry date
+		.controls
+		.controls
+			=o.label 'Warranty'
+			.input
+				=o.text_field 'warranty'
+				%p.help-block Enter the warranty in months
+		.controls
+		.controls
+			=o.label 'Description'
+			.input
+				=o.text_area 'description', rows: 7, columns: 40
+				%p.help-block Enter a brief description of your offer
+		.controls
+		
+		.form-actions
+		%button.btn.btn-primary{type: "submit"} Proceed
+		%button.btn.btn-primary{type: "reset"} Clear

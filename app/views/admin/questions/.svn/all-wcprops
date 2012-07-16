@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/2471/trunk/iNeed/app/views/admin/questions
+END
+index.html.haml
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/2469/trunk/iNeed/app/views/admin/questions/index.html.haml
+END
+_new_form.html.haml
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/2471/trunk/iNeed/app/views/admin/questions/_new_form.html.haml
+END

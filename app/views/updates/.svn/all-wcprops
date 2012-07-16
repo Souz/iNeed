@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/2616/trunk/iNeed/app/views/updates
+END
+_form.html.haml
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/467/trunk/iNeed/app/views/updates/_form.html.haml
+END
+_index.html.haml
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/2616/trunk/iNeed/app/views/updates/_index.html.haml
+END
+destroy.js.erb
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/2616/trunk/iNeed/app/views/updates/destroy.js.erb
+END
+edit.html.haml
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/467/trunk/iNeed/app/views/updates/edit.html.haml
+END
+show.html.haml
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/467/trunk/iNeed/app/views/updates/show.html.haml
+END
+new.html.haml
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/962/trunk/iNeed/app/views/updates/new.html.haml
+END
+index.html.haml
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/2616/trunk/iNeed/app/views/updates/index.html.haml
+END

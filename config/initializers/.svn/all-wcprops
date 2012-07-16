@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/2617/trunk/iNeed/config/initializers
+END
+quiet_assets.rb
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/2617/trunk/iNeed/config/initializers/quiet_assets.rb
+END
+mime_types.rb
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/188/trunk/iNeed/config/initializers/mime_types.rb
+END
+secret_token.rb
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/188/trunk/iNeed/config/initializers/secret_token.rb
+END
+setup_mail.rb
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/2617/trunk/iNeed/config/initializers/setup_mail.rb
+END
+session_store.rb
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/188/trunk/iNeed/config/initializers/session_store.rb
+END
+inflections.rb
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/188/trunk/iNeed/config/initializers/inflections.rb
+END
+devise.rb
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/1765/trunk/iNeed/config/initializers/devise.rb
+END
+client_side_validations.rb
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/!svn/ver/2030/trunk/iNeed/config/initializers/client_side_validations.rb
+END
+task_scheduler.rb
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/2617/trunk/iNeed/config/initializers/task_scheduler.rb
+END
+omniauth.rb
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/2303/trunk/iNeed/config/initializers/omniauth.rb
+END
+backtrace_silencers.rb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/188/trunk/iNeed/config/initializers/backtrace_silencers.rb
+END
+log_formatting.rb
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/2617/trunk/iNeed/config/initializers/log_formatting.rb
+END
+wrap_parameters.rb
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/188/trunk/iNeed/config/initializers/wrap_parameters.rb
+END

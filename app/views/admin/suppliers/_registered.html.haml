@@ -1,0 +1,51 @@
+/#@Author = Dalia William, Nada Nasr
+/@Summary = A page that displays the name, email, rating, and location of all registered suppliers, "warned" if the 
+/           supplier is warned and a link "view comments" to view the supplier's comments.
+
+%h1 Suppliers
+
+- if @registered_suppliers.empty?
+  %div{:style => "width:290px"}
+  .alert.alert-error
+    There are no suppliers
+
+- else
+
+  = form_tag '#', :method => :get, :id => 'users_form' do
+    %button#email.button{:type => "submit", :disabled => "disabled"}
+      Email
+
+    %button#ban_supplier.button{:disabled => "disabled" , "data-toggle" => "modal", :href => "#myModal"}
+      Ban
+
+    %button#warn_supplier.button{:disabled => "disabled", "data-toggle" => "modal", :href => "#myModal"}
+      Warn
+    %table.table.table-striped
+      %thead
+      %tr
+        %th 
+        %th name
+        %th email
+        %th rating
+        %th location
+        - @registered_suppliers.each do |s|
+          %tr
+            %td 
+              = check_box_tag 'user_ids[]', s.id
+              %td= s.name               
+              %td= s.email
+              %td= s.rating
+              %td= s.location
+              %td= link_to 'View comments' , view_supplier_feedbacks_path, :supplier_id => s.id
+            - if (s.banned ==false)
+              %td warned!
+    #myModal.modal.fade
+      .modal-header
+        %button.close{"data-dismiss" => "modal"} ×
+        %h3 Reason For Warning Or Banning
+      .modal-body
+        %h4 Please enter the reason
+        =text_field_tag :reason, params[:reason]
+      .modal-footer
+        %a#reason_supplier_button.btn.btn-primary{:href => '#'} Submit
+= will_paginate @registered_suppliers, :param_name => 'registered_suppliers'  

@@ -1,0 +1,44 @@
+%h1 Reported Needs
+
+- if(@reported_needs.empty?)
+  %p There are no reported needs
+
+- else 
+
+  = form_tag '#', :method => :get, :id => 'needs_form' do
+    %button#delete_need.button{:type => "submit", :disabled => "disabled", :class => "btn-primary btn-large" , "data-toggle" => "modal", :href => "#myModal"}
+      Delete
+    %button#hide.button{:type => "submit", :disabled => "disabled", :class => "btn-primary btn-large" , "data-toggle" => "modal", :href => "#myModal"}
+      Hide
+    %button#warn_need.button{:type => "submit", :disabled => "disabled", :class => "btn-primary btn-large" , "data-toggle" => "modal", :href => "#myModal"}
+      Warn creator
+    %button#ban_need.button{:type => "submit", :disabled => "disabled", :class => "btn-primary btn-large" , "data-toggle" => "modal", :href => "#myModal"}
+      Ban creator
+    %table.table.table-striped
+      %thead
+      %tr
+        %th 
+        %th name
+        %th creator
+        %th number of reports
+        - @reported_needs.each do |r|
+          %tr
+            %td 
+              = check_box_tag 'need_ids[]', r.id
+              %td= r.name                
+              %td= r.customer.name
+              %td= r.records.length
+    
+    #myModal.modal.fade
+      .modal-header
+        %button.close{"data-dismiss" => "modal"} ×
+        %h3 Reason For Warning Or Banning
+      .modal-body
+        %h4 Please enter the reason
+        =text_field_tag :reason
+      .modal-footer
+        %a.btn{"data-dismiss" => "modal"} Close
+        %a#reason_need_button.btn.btn-primary{:href => "#"} Submit
+= will_paginate @reported_needs, :param_name => 'reported_needs' 
+
+    

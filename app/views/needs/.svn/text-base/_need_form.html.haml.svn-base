@@ -1,0 +1,15 @@
+/@author: Nourhan Azab
+/@author: Sarah El-Sherbiny
+/@summary: a partial that checkes whether the current logged in customer is a needer or not and accrodingly display a button. If the cutsomer needs this need then un-need button is shown otherwise the need button is shown.
+/ to be rendered inside needs show page for iNeed action
+-if !@need.is_needer(current_customer)
+	=button_to "iNeed", iNeed_customer_needs_path(:id => @need.id, :go_to_my_needsflag => false), :class =>"btn-large btn-success",:remote => true
+-else
+	=button_to "Un-need" , un_need_customer_needs_path(:need_id => @need.id), :class=>"btn-large  btn-danger",:remote => true
+
+
+
+
+
+
+   

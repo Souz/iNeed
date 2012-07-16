@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/2489/trunk/iNeed/app/views/admin/suppliers
+END
+_unregistered.html.haml
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/2305/trunk/iNeed/app/views/admin/suppliers/_unregistered.html.haml
+END
+banned.html.haml
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/1589/trunk/iNeed/app/views/admin/suppliers/banned.html.haml
+END
+_registered.html.haml
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/2489/trunk/iNeed/app/views/admin/suppliers/_registered.html.haml
+END
+index.html.haml
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/2421/trunk/iNeed/app/views/admin/suppliers/index.html.haml
+END

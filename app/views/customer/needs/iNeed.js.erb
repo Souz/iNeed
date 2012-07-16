@@ -1,0 +1,5 @@
+$("#<%= @need.id %>").html("<%= escape_javascript(render(:partial => "needs/need_widget")) %>");
+$("#<%= @need.id %>"+"need_page").html("<%= escape_javascript(render(:partial => "need_form")) %>");
+$("#AllComments").html("<%= escape_javascript(render(:partial => "comments/comments_partial")) %>");
+$("#offers").html("<%= escape_javascript(render(:partial => "offers")) %>");
+$("#desc").html("<%= escape_javascript(render(:partial => "need_info")) %>");

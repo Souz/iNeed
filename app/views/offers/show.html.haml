@@ -1,0 +1,43 @@
+/@Author: Nourhan Aloush
+/@Summary:	This view is for the summary page
+/			=> It has the info on the new created offer
+/			=> The supplier reaches this page after submitting the form of creating new offer
+/@Buttons:	1. Publish: publish the offer and make it shown in both my offers and need's page of customer
+/			2. Edit: returns back to the new created offer to edit it
+/			3. cancel: deleted the offer
+
+%h3.alert-error= flash[:notice]
+
+/This control-group is for using the bootswatch
+%body
+	%h2= "Here is your offer, please make sure the information provided is correct before submitting:"
+	%br
+	%h3= 'Quantity: '
+	%p
+		%b= @offer.quantity.to_s
+	%h3= 'Min quantity: '
+	%p
+		%b= @offer.min_quantity.to_s
+	%h3= 'Price: '
+	%p
+		%b= @offer.price.to_s
+	%h3= 'Expiry Date: '
+	%p
+		%b= @offer.expiry_date.to_s
+	%h3= 'Warranty: '
+	%p
+		%b= @offer.warranty.to_s
+	-if(!(@offer.description.blank?))
+		%h3= 'Description: '
+		%p
+			%b= @offer.description
+			
+	%br
+	-if(!@offer.published)
+		%b=button_to "Edit" , edit_offer_path(:id => @offer.id), method: :get, :class=>"btn-large  btn-primary", style: "float: left"
+		%b=button_to "Delete" , @offer, :confirm => 'Are you sure?', :method => :delete, :class=>"btn-large  btn-primary", style: "float: left"
+		%b=button_to "Publish" , publish_supplier_offers_path(:offer_id => @offer.id, :need_id => @offer.need_id), :class=>"btn-large  btn-primary", style: "float: left"
+	-else
+		%b=button_to "Edit" , edit_offer_path(:id => @offer.id), method: :get, :class=>"btn-large  btn-primary", style: "float: left"
+		%b=button_to "Delete" , @offer, :confirm => 'Are you sure?', :method => :delete, :class=>"btn-large  btn-primary", style: "float: left"
+		

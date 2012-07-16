@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/2615/trunk/iNeed/app/controllers/supplier
+END
+needs_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/2615/trunk/iNeed/app/controllers/supplier/needs_controller.rb
+END
+feedbacks_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/2445/trunk/iNeed/app/controllers/supplier/feedbacks_controller.rb
+END
+transactions_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/2460/trunk/iNeed/app/controllers/supplier/transactions_controller.rb
+END
+offers_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/2460/trunk/iNeed/app/controllers/supplier/offers_controller.rb
+END
+complaints_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/2460/trunk/iNeed/app/controllers/supplier/complaints_controller.rb
+END
+categories_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/2460/trunk/iNeed/app/controllers/supplier/categories_controller.rb
+END

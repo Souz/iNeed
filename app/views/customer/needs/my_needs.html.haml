@@ -1,0 +1,83 @@
+/Author :: Sarah El-Sherbiny
+/@author: Nourhan Azab
+/@summary: displays the my_needs list with their subscribed offers. Each need is displayed with an un-need button. My needs are paginated showing 5 needs/page.
+-counter=0
+-if flash[:notice]
+	.alert.alert-success{:style => "width:400px"}
+		= flash[:notice] 
+%h1 My Needs
+%div.span4
+	%table.table.table-striped
+		-if @my_needs.empty?
+			.alert.alert-error
+				='You have no needs yet!'
+			=link_to "Explore all needs here",needs_path
+			
+		- @my_needs.each do |need|
+			%table.table.table-condensed.table-striped
+				%tr
+					%td=image_tag need.photo.url(:normal),:width =>'80px',:height =>'80px'
+					%td
+						%h3= link_to need.name,customer_need_path(need.id.to_s)
+					%td=button_to "Un-need" , un_need_customer_needs_path(:need_id => need.id), :class => "btn-large  btn-danger"
+				%table.table.table-condensed.table-striped
+				%h4 Subscribed Offers
+				%div.span4
+					-if @my_subscribed_offers[counter].empty?
+						%div{:style => "width:290px"}
+							.alert.alert-error
+								='You have no subscribed offers!'
+					-else
+						-@my_subscribed_offers[counter].each do |offer|
+							%table.table.table-condensed.table-striped
+								-if !(offer.deleted)
+									%tr
+										-need = Need.find(offer.need_id)
+										%td
+											%b="Need's name:"
+											%b="#{offer.need.name}"
+									%tr
+										%td
+											%b="Info: "
+											%b="#{offer.description}"	
+									%tr	
+										%td
+											%b="Subscribed: "
+											%b="#{offer.num_of_subscribed_quantity} / #{offer.quantity}"
+									%tr	
+										%td
+											%b="Minimum Quantity = #{offer.min_quantity}"	
+										%td{color: 'green', align: 'right'}
+											%b="Price = #{offer.price}$"
+									%tr	 
+										%td
+											%b="Expires on: #{offer.expiry_date.to_s}"
+									%tr
+										-if (Transaction.returnTransaction(current_customer.id, offer.id)).pending
+											%td
+												%b="Status: Pending"
+										-else
+											%td
+												%b="Status: Non-Pending"	
+									%tr
+										%td
+											%b="Progress :"
+											.progress.progress-info.progress-striped.active
+												.bar{:style => "width: #{offer.num_of_subscribed_quantity*100/offer.quantity}%;"}
+									-if (Transaction.returnTransaction(current_customer.id, offer.id)).done
+										-if ((Feedback.get_feedback((Transaction.returnTransaction(current_customer.id, offer.id)).id)).nil?)
+											%td
+												%b="Transaction : Done"
+											%td=link_to "Give Feedback" , new_customer_feedback_path(:transaction_id => Transaction.returnTransaction(current_customer.id,offer.id).id),:class =>"btn-small btn-success"
+										-else
+											%td
+												%div{:style => "width:400px"}
+													.alert.alert-error
+														='This transaction is done but You already gave a feedback'
+								%br
+				-counter=counter+1
+		= will_paginate @my_needs
+/display the hot offers and hot needs for customers 		
+=render 'hot_stuff'
+%script
+	$('.pagination a').attr('data-remote', 'true');

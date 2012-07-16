@@ -1,0 +1,13 @@
+/this page shows tracked categories
+%p 
+  %h3 Tracked Categories
+=will_paginate @categories,  :param_name => 'categories'
+-if @categories.length == 0
+  %td No Categories Tracked Yet
+-else
+  - @categories.each do |category|
+    .row-fluid
+      .span8 
+        = link_to category.name, :controller => "supplier/categories", :action => "show", :id => category.id
+      .span4  
+        = button_to "UnTrack", {:action => "untrack",:controller =>"supplier/categories",:id => category.id, :current_id => category.id, :method => :get}, :class=>"btn btn-warning btn-mini"

@@ -1,0 +1,36 @@
+/ @Author= Alaa Shafaee
+/ @Summary= a form to add a category
+%h1 Add a Category
+/ Inputs are taken from the user to initialize the name and parent of the category
+/ Errors will appear in case the category is empty or has a name that already exists.
+= form_for(@category, :url => admin_categories_path) do |f|
+	-if @category.errors.full_messages.any?   
+		/a message indicating success or failure is displayed. 
+		%div{:style => "width:610px"}
+			.alert.alert-error
+				=f.error_messages
+	-if flash[:notice]
+		%div{:style => "width:610px"}
+			.alert.alert-success
+				=h flash[:notice]				
+	.control-group
+		
+		.controls
+			=f.label :Category_Name
+			.control-group-error
+				.input
+					=f.text_field :name
+		.controls
+			/two labels are added. One for parent and one for adding a catgeory
+			=f.label :Parent_Category
+			.control-group-error
+				.input
+					/A hash where each entry contains a category name as both its name and value.
+					-categories_hash = Category.all.collect {|p| [p.name, p.name]}
+					-categories_hash.delete(['Others','Others'])
+					/dropdown to allow the admin to select the parent category. Parent name can also be blank.
+					= f.select(:parent, categories_hash, { :include_blank => true })
+				%p.help-block please select the parent category (select "categories" in case of highest level category).
+				%p.help-block Note: The root ("categories") can not be deleted. All children categories are deleted in case of deleting a parent.
+		%p
+			= f.submit 'Add Category'

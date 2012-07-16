@@ -1,0 +1,77 @@
+/@Author = Nisma el-Nayeb
+/@Summary = This is the need's page for a user who is not logged in. A need's details(name, picture, /description.. etc), the offers made on it, the comments made on it and similar needs are /displayed on this page along with buttons for tracking and placing a new offer.
+
+/This div is where usually either the "iNeed" button is or the "track" and "place an offer" buttons are, but here is just serves to have a consistent layout.
+#empty{:style => "height:100px;width:400px;float:right;"}
+
+/This div displays the name of the need and it's category.
+#header{:style => "height:150px;width:800;"}
+	%h1= @need.name
+	%h2= @need.category.name
+	
+/This div displays a need's picture, description and statistics along with a table that /displays the number of users according to location.
+#desc{:style => "height:600px;width:450px;float:left;background:#E8E8E8;overflow:auto;"}
+	%p{:style => "margin-left:20px;margin-top:20px;"}
+		=image_tag @need.photo.url(:original), :width =>'150px',:height =>'200px'
+	%h3{:style => "margin-left:20px;"}
+		= "Description: "
+	%b{:style => "margin-left:20px;"}
+		= @need.description
+	
+
+/This div displays offers if there are any offers made(@offers.size>0).
+#offers{:style => "height:600px;width:400px;float:right;overflow:auto;margin-right:20px;"}
+	%h2= "Offers:"
+	-if ( !@offerlist.empty? )&&( ((@offerlist[0]).num_of_subscribed_quantity * 1.0) != 0 )
+		%a.btn{"data-toggle" => "modal", :href => "#stat", :class =>"btn-large btn-success"} Show Statistics
+		#stat.modal.hide.fade{:style => "width:650px;height:550px;"}
+			.modal-body{:style => "width:650px;height:550px;"}
+				/Code For Showing the Statistics Chart by "Hazem El-Kilisly"
+				= high_chart("my_id", @chart)
+				/End Of code
+	%hr{style: "clear: both;"}
+	- if @offers.size > 0
+		- for offer in @offers
+			- if offer.deleted != true
+				%h4= offer.supplier.name
+				%br
+				%p{:style => "color:#CC0000;font-size:30;"}
+					%b= "$ "
+					%b= offer.price
+				%p
+					%b= "Number of people subscribed: "
+					= offer.num_of_subscribed_quantity
+				%hr{style: "clear: both;"}
+	- else 
+		%div{:style => "width:280px"}
+			.alert.alert-alert
+				There are no offers to be displayed yet.
+
+/This div displays similar needs.
+#similarneeds{:style => "float:right;margin-top:150px;margin-right:250px;"}
+	%h2= "Similar Needs:"
+
+	%table
+		- @listrelatedneeds.each do |need|
+			- if need != @need
+				%tr
+					%td=image_tag (need).photo.url(:normal), :width =>'80px',:height =>'80px'
+					%td
+						%b=link_to need.name ,need_path(need)
+				
+
+			- if @listrelatedneeds.length == 1
+				%td= 'No Similar Needs to be displayed'
+	
+
+/This div renders "comments_partial".
+#comments{:style => "height:400px;width:450px;float:left;overflow:auto;margin-top:20px;"}
+	%h3= "Comments"
+	%hr{style: "clear: both;"}
+	= render 'comments/comments_partial'
+	
+/This div is where usually the "report need" button is but here is just serves to have a /consistent layout.
+#spacereport{:style => "height:100px;width:1000px;float:left;"}
+	
+	
+	

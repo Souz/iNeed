@@ -1,0 +1,56 @@
+/Authour :: Sarah El-Sherbiny
+/@summary:: display hot offers and hot needs for the customer
+%div.span4
+	%div.span4
+		%div.span4
+			%table.table.table-condensed.table-striped
+				%h3 Hot Offers
+				-if @hot_offers_forCustomers.empty?
+					%div{:style => "width:290px"}
+						.alert.alert-error
+							='There are no Offers yet!'
+				-else			
+					- @hot_offers_forCustomers.each do |hot_offer|
+						%table.table.table-condensed.table-striped
+							-if !hot_offer.deleted	
+								%tr
+									-need = Need.find(hot_offer.need_id)
+									%td
+										%b="Need's name:"
+										%b= link_to need.name,customer_need_path(hot_offer.need.id.to_s)
+									%td=image_tag (Need.find(hot_offer.need_id)).photo.url(:normal),:width =>'80px',:height =>'80px'
+								%tr
+									%td
+										%b="Info: "
+										%b="#{hot_offer.description}"	
+								%tr	
+									%td 
+										%b="Subscribed: "
+										%b="#{hot_offer.num_of_subscribed_quantity} / #{hot_offer.quantity}"
+								%tr	
+									%td
+										%b="Minimum Quantity = #{hot_offer.min_quantity}"	
+									%td{color: 'green', align: 'right'}
+										%b="Price = #{hot_offer.price}$"
+								%tr	 
+									%td
+										%b="Expires on: #{hot_offer.expiry_date.to_s}"
+								%tr
+									%td
+										%b="Progress :"
+										.progress.progress-info.progress-striped.active
+											.bar{:style => "width: #{hot_offer.num_of_subscribed_quantity*100/hot_offer.quantity}%;"}
+					= will_paginate @hot_offers_forCustomers , :param_name => 'offerPage'	
+					%br
+			%table.table.table-condensed.table-striped
+				%h3 Hot Needs
+				-if @hot_needs_forCustomers.empty?
+					%div{:style => "width:290px"}
+						.alert.alert-error
+							='There are no Needs yet!'
+				-else
+					- @hot_needs_forCustomers.each do |hot_need|
+						-@need = hot_need
+						%tr{:id => @need.id}
+							=render 'needs/need_widget'
+					= will_paginate @hot_needs_forCustomers, :param_name => 'needPage'

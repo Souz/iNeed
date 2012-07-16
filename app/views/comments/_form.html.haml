@@ -1,0 +1,16 @@
+= form_for @comment do |f|
+  -if @comment.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@comment.errors.count, "error")} prohibited this comment from being saved:"
+      %ul
+        - @comment.errors.full_messages.each do |msg|
+          %li= msg
+  
+  %p
+  = f.text_area :content, :cols => "20", :rows => "2"
+
+  .actions
+    = f.submit 'Save'
+
+/= link_to 'Back', comments_path
+

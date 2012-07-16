@@ -1,0 +1,15 @@
+<html>
+
+<head>
+<%= @user.name %>,
+</head>
+
+<body>
+
+<p>The offer on need
+<%= @offer.need.name %> 
+ is deleted because the need is deleted by the admin !! </p>
+
+ 
+</body>
+</html>

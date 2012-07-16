@@ -1,0 +1,103 @@
+/@author: Nourhan Azab
+/ @Author: Amir Emad
+/@summary: this is the home view it shows the log in forms for customers and suppliers and contain links to the register pages as well.
+!!! Strict
+%html{:xmlns => "http://www.w3.org/1999/xhtml"}
+  %head
+    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}/
+    %meta{:content => "all", :name => "robots"}/
+    %title iNeed
+
+    /%link{:href => "css/dcaccordion.css", :rel => "stylesheet", :type => "text/css"}/
+    %script{:src => "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", :type => "text/javascript"}
+      $(document).ready(function($){
+      $('#accordion-5').dcAccordion({
+      eventType: 'hover',
+      autoClose: false,
+      saveState: true,
+      disableLink: true,
+      menuClose: true,
+      speed: 'fast',
+      showCount: true
+      });
+      });
+    %script{:src => "/assets/jquery.cookie.js", :type => "text/javascript"}
+      $(document).ready(function($){
+      $('#accordion-5').dcAccordion({
+      eventType: 'hover',
+      autoClose: false,
+      saveState: true,
+      disableLink: true,
+      menuClose: true,
+      speed: 'fast',
+      showCount: true
+      });
+      });
+    %script{:src => "/assets/jquery.hoverIntent.minified.js", :type => "text/javascript"}
+      $(document).ready(function($){
+      $('#accordion-5').dcAccordion({
+      eventType: 'hover',
+      autoClose: false,
+      saveState: true,
+      disableLink: true,
+      menuClose: true,
+      speed: 'fast',
+      showCount: true
+      });
+      });
+    %script{:src => "/assets/jquery.dcjqaccordion.2.7.min.js", :type => "text/javascript"}
+      $(document).ready(function($){
+      $('#accordion-5').dcAccordion({
+      eventType: 'hover',
+      autoClose: false,
+      saveState: true,
+      disableLink: true,
+      menuClose: true,
+      speed: 'fast',
+      showCount: true
+      });
+      });
+    :javascript
+      $(document).ready(function($){
+                $('#accordion-5').dcAccordion({
+                  eventType: 'hover',
+                  autoClose: false,
+                  saveState: true,
+                  disableLink: true,
+                  menuClose: true,
+                  speed: 'fast',
+                  showCount: true
+                });
+      });
+    / %link{:href => "css/skins/blue.css", :rel => "stylesheet", :type => "text/css"}/
+    / %link{:href => "css/skins/graphite.css", :rel => "stylesheet", :type => "text/css"}/
+    / %link{:href => "css/skins/grey.css", :rel => "stylesheet", :type => "text/css"}/
+    :css
+      input { position: relative; }
+      #need_name_auto {top: 7px; width: 150px; }  
+      #need_search { margin-left: 350px; top: 0px;}  
+    = stylesheet_link_tag "application", "jquery-ui",'icons'
+    = javascript_include_tag "application" 
+  .navbar.navbar-fixed-top
+    .navbar-inner
+      .container-fluid
+        %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
+        %a.brand{:href => "/",:style => "font-weight:bold;font-size:2em;margin-left:50px;"} iNeed
+        /Author: Amir Emad
+        /search form_tag aided by autocomplete
+        = form_tag search_needs_path,:id => 'need_search', :method => 'get' do
+          = text_field_tag :need_name_auto, params[:need_name_auto],:class => 'search', :style => "width:50%; height:20px;",:placeholder => 'Search...'
+          = hidden_field_tag :need_id
+          = hidden_field_tag :autocomplete_type
+          -if customer_signed_in?
+            = hidden_field_tag :current_user, 'customer/'
+          -else
+            -if supplier_signed_in?
+              = hidden_field_tag :current_user, 'supplier/'
+            -else
+              = hidden_field_tag :current_user, '' 
+          %button.btn{:type => 'submit',:name => 'commit',:id => 'srch-btn'}
+            %i.icon-search
+  %body
+    #content.span9
+      = yield

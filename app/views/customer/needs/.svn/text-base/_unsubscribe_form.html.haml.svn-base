@@ -1,0 +1,17 @@
+/@Author= "Mohamed Ayman"
+/ form_tag takes the quantity to be unsubscribed,the offer's id and the need's id and by clicking on the unsubscribe button submit the parameters to the unsubscribe method in the offer controller  
+=form_tag("../../customer/offers/unsubscribe", :method=>'post') do
+	.control-group
+		=text_field_tag :quantity, nil, :placeholder => 'Enter quantity'
+		=hidden_field_tag  :offer_id,offer.id
+		=hidden_field_tag  :need_id,@need.id
+	%button.btn.btn-primary{:type => "submit_tag"} Unsubscribe
+	-if flash[:notice]
+		-if flash[:notice].include?'successfully'
+			%div.span3
+				.alert.alert-success
+					= flash[:notice]
+		-else
+			%div.span3
+				.alert.alert-error
+					= flash[:notice]

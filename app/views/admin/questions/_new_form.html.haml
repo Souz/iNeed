@@ -1,0 +1,21 @@
+/@Author = Nada Nasr
+/@Summary = form for creating a new question
+= form_for @new_question, :url => {:action => "create"}, :html => { :class => 'form-inline', :multipart => true }, :validate => true do |add_question_form|
+  -if !add_question_form.error_messages.empty?
+    %div{:style => "width:100%"} 
+      .alert.alert-error
+        = add_question_form.error_messages
+  
+  #add_question_div{:style => "display:none"}
+
+    = add_question_form.label :content
+    = add_question_form.text_area :content, :style => "width:100%;height:40px;"
+
+    %p.help-block The answers to all questions are the following "Strongly agree", "Agree", "Neutral", "Disagree" and "Strongly disagree". 
+    Enter a statement for which you expect a positive answer. For example, "I was satisfied with the quality of the product." and not "How was the quality of the product?".
+    The weights of the questions contribute to the rating of the supplier as follows: "Strongly disagree" has a weight of 5, "Agree" a weight of 4, and so on..
+
+    %br
+    .actions
+      = add_question_form.submit "Add question", :class => "btn-large btn-success", :style => "width:20%;float:right", :id =>"add"
+  

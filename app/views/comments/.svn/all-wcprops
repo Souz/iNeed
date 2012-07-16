@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/2616/trunk/iNeed/app/views/comments
+END
+_form.html.haml
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/484/trunk/iNeed/app/views/comments/_form.html.haml
+END
+_comments_partial.html.haml
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/!svn/ver/2616/trunk/iNeed/app/views/comments/_comments_partial.html.haml
+END
+create.js.erb
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/2384/trunk/iNeed/app/views/comments/create.js.erb
+END
+destroy.js.erb
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/2605/trunk/iNeed/app/views/comments/destroy.js.erb
+END
+like.js.erb
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/2607/trunk/iNeed/app/views/comments/like.js.erb
+END
+dislike.js.erb
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/2605/trunk/iNeed/app/views/comments/dislike.js.erb
+END
+unlike.js.erb
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/2605/trunk/iNeed/app/views/comments/unlike.js.erb
+END

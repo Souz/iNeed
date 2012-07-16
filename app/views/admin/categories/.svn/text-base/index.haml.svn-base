@@ -1,0 +1,44 @@
+/@Author = Mohamed Osama
+/@Author = Alaa Shafaee
+/@summary = A layout which views a list of categories and at each row the category is viewed at which each leaf is under its parent with a delete button beside each category
+/           A form for adding a category is rendered.
+%h1 
+	Categories
+= render 'add_category_form'
+-i=1
+
+#myModal.modal.hide.fade
+	.modal-header
+		%button.close{"data-dismiss" => "modal"} ×
+		%h3 You are about to delete the need. Please specify the action to be taken on deletion
+	.modal-body
+		%p 
+		=form_tag(admin_categories_path, :controller => "categories", :action => "destroy", :method => "delete") do  
+			%p
+			=radio_button_tag 'choice', "1", :checked => true
+			Delete all related needs
+			%p
+			=radio_button_tag 'choice', "2"
+			Transfer needs to category 'Others'
+			%br
+			=hidden_field_tag :id
+			=submit_tag("Delete")	
+/ %link{:href => "css/skins/blue.css", :rel => "stylesheet", :type => "text/css"}/
+/ %link{:href => "css/skins/graphite.css", :rel => "stylesheet", :type => "text/css"}/
+/ %link{:href => "css/skins/grey.css", :rel => "stylesheet", :type => "text/css"}/
+-if (@categories.length == 0)
+	There are no categories
+-if (@categories.length > 0)
+	%table.table.table-striped
+		%thead
+			%tr
+				%th #
+				%th Name	
+			- @categories_roots = Category.roots
+			- @categories_roots.each do |cate|
+				%tr
+					%td= i
+					%td
+						= show_category(cate)
+					-i = i+1
+

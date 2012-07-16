@@ -1,0 +1,75 @@
+<html>
+<head>
+<title> Changes in offers in the last 24 hours</title>
+</head>
+<body>
+<table align="center" border="0" cellpadding="0" cellspacing="0" width="595">
+<table style="font-family: Arial,Verdana,Helvetica,sans-serif;" border="0" cellpadding="0" cellspacing="0" height="18" width="595">
+  <tbody>
+    <tr>
+    <td border="0" cellspacing="0" cellpadding="0" style="font:Arial, Helvetica, verdana, sans-serif; font-size:60px; font-weight: bold; color:#ffffff; text-align:center; vertical-align: center" bgcolor="#35b3e5" height="40" width="595">iNeed</td>
+  </tr>
+  <tr>
+    <td border="0" cellspacing="0" cellpadding="0" style="font:Arial, Helvetica, verdana, sans-serif; font-size:20px; font-weight: bold; color:#ffffff; text-align:center; vertical-align: center" bgcolor="#35b3e5" height="40" width="595">My Offers</td>
+  </tr>
+</tbody></table>
+     <table style="font-family: Arial,Verdana,Helvetica,sans-serif;" bgcolor="#35b3e5" border="0" cellpadding="0" cellspacing="0" width="595">
+        <tbody><tr>
+          <td bgcolor="#35b3e5" width="24">&nbsp;</td>
+
+          <td style="border:3px solid #e9f8fd" cellspacing="0" cellpadding="0" height="177" width="267"><a href= <%= "#{@url}/supplier/needs/#{((@offers[0]).need.id)}?" %>  target="_blank"><img style="display:block" src= <%= "#{@url}#{(@offers[0].need.photo.url(:normal))}" %> cellspacing="0" cellpadding="0" height="177" width="267"></a></td>
+
+          <td bgcolor="#35b3e5" width="13">&nbsp;</td>
+
+          <td style="border:3px solid #e9f8fd" cellspacing="0" cellpadding="0" height="177" width="267"><a href= <%= "#{@url}/supplier/needs/#{((@offers[1]).need.id)}?" %> target="_blank"><img style="display:block" src= <%= "#{@url}#{(@offers[1].need.photo.url(:normal))}" %> cellspacing="0" cellpadding="0" height="177" width="267"></a></td>
+          
+          <td bgcolor="#35b3e5" width="24">&nbsp;</td>
+        </tr>
+        <tr>
+          <td bgcolor="#35b3e5" width="24">&nbsp;</td>
+          <td border="0" cellspacing="0" cellpadding="0" style="font:Arial, Helvetica, verdana, sans-serif; font-size:11px; font-weight: bold; color: #1f4796; text-align:center; vertical-align: center;" bgcolor="#e9f8fd" height="56" width="267"><span style="font:Arial, Helvetica, verdana, sans-serif; font-size:11px; font-weight: bold; color: #1f4796; text-align:center; vertical-align: center;"><a href=<%= "#{@url}/needs/#{((@offers[0]).need.id)}?" %> style="color:#1f4796; text-decoration:none;" target="_blank"> <%= @offers[0].need.name %>  <br> <%= "Total Subscribers: #{@offers[0].num_of_subscribed_quantity}" %>  <br> <%= @offers[0].description %> </a></span></td>
+          <td bgcolor="#35b3e5" width="13">&nbsp;</td>
+          <td border="0" cellspacing="0" cellpadding="0" style="font:Arial, Helvetica, verdana, sans-serif; font-size:11px; font-weight: bold; color: #1f4796; text-align:center; vertical-align: center;" bgcolor="#e9f8fd" height="56" width="267"><span style="font:Arial, Helvetica, verdana, sans-serif; font-size:11px; font-weight: bold; color: #1f4796; text-align:center; vertical-align: center;"><a href=<%= "#{@url}/needs/#{((@offers[1]).need.id)}?" %> style="color:#1f4796; text-decoration:none;" target="_blank">  <%= @offers[1].need.name %>  <br> <%= "Total Subscribers: #{@offers[1].num_of_subscribed_quantity}" %> <br> <%= @offers[1].description %> </a></span></td>
+          <td bgcolor="#35b3e5" width="24">&nbsp;</td>
+        </tr>
+    </tbody></table>
+<table border="0" cellpadding="0" cellspacing="0" height="10" width="595">
+  <tbody><tr>
+    <td border="0" cellspacing="0" cellpadding="0" bgcolor="#35b3e5" height="10" width="595"></td>
+  </tr>
+</tbody></table>
+       <table style="font-family: Arial,Verdana,Helvetica,sans-serif;" bgcolor="#35b3e5" border="0" cellpadding="0" cellspacing="0" width="595">
+        <tbody><tr>
+          <td bgcolor="#35b3e5" width="24">&nbsp;</td>
+
+          <td style="border:3px solid #e9f8fd" cellspacing="0" cellpadding="0" height="177" width="267"><a href= <%= "#{@url}/supplier/needs/#{((@offers[2]).need.id)}?" %> target="_blank"><img style="display:block" src= <%= "#{@url}#{(@offers[2].need.photo.url(:normal))}" %>  cellspacing="0" cellpadding="0" height="177" width="267"></a></td>
+
+          <td bgcolor="#35b3e5" width="13">&nbsp;</td>
+
+          <td style="border:3px solid #e9f8fd" cellspacing="0" cellpadding="0"height="177"  width="267"><a href= <%= "#{@url}/supplier/needs/#{((@offers[3]).need.id)}?" %> target="_blank"><img style="display:block" src= <%= "#{@url}#{(@offers[3].need.photo.url(:normal))}" %> cellspacing="0" cellpadding="0" height="177" width="267"></a></td>
+
+          <td bgcolor="#35b3e5" width="24">&nbsp;</td>
+        </tr>
+
+        <tr>
+          <td bgcolor="#35b3e5" width="24">&nbsp;</td>
+          <td border="0" cellspacing="0" cellpadding="0" style="font:Arial, Helvetica, verdana, sans-serif; font-size:11px; font-weight: bold; color: #1f4796; text-align:center; vertical-align: center;" bgcolor="#e9f8fd" height="56" width="267"><span style="font:Arial, Helvetica, verdana, sans-serif; font-size:11px; font-weight: bold; color: #1f4796; text-align:center; vertical-align: center;"><a href=<%= "#{@url}/needs/#{((@offers[2]).need.id)}?" %> style="color:#1f4796; text-decoration:none;" target="_blank">  <%= @offers[2].need.name %>  <br>  <%= "Total Subscribers: #{@offers[2].num_of_subscribed_quantity}" %><br> <%= @offers[2].description %> </a></span></td>
+          <td bgcolor="#35b3e5" width="13">&nbsp;</td>
+          <td border="0" cellspacing="0" cellpadding="0" style="font:Arial, Helvetica, verdana, sans-serif; font-size:11px; font-weight: bold; color: #1f4796; text-align:center; vertical-align: center;" bgcolor="#e9f8fd" height="56" width="267"><span style="font:Arial, Helvetica, verdana, sans-serif; font-size:11px; font-weight: bold; color: #1f4796; text-align:center; vertical-align: center;"><a href= <%= "#{@url}/needs/#{((@offers[3]).need.id)}?" %> style="color:#1f4796; text-decoration:none;" target="_blank">  <%= @offers[3].need.name %>  <br> <%= "Total Subscribers: #{@offers[3].num_of_subscribed_quantity}" %> <br> <%= @offers[3].description %> </a></span></td>
+          <td bgcolor="#35b3e5" width="24">&nbsp;</td>
+        </tr>
+    </tbody></table>
+      <table border="0" cellpadding="0" cellspacing="0" height="10" width="595">
+  <tbody><tr>
+    <td border="0" cellspacing="0" cellpadding="0" bgcolor="#35b3e5" height="10" width="595"></td>
+  </tr>
+</tbody></table>
+<table bgcolor="#35b3e5" border="0" cellpadding="0" cellspacing="0" height="62" width="595">
+  <tbody><tr>
+    <td height="62" width="595"></td>
+  </tr>
+</tbody></table>
+</td>
+  </tr>
+        </tbody></table>
+  </body></html>

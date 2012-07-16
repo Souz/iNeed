@@ -1,0 +1,91 @@
+/@Author= "Marina Hani Charles"
+/@Summary= button delete so that only the customer can delete his comments 
+/@Author = Nisma El-Nayeb
+/@Summary = This partial displays comments made on a certain need. An unbanned customer who is /a needer is the only one who can add a comment, delete his own comments, like, dislike and /undo like/dislike a comment and report other customer's comments.
+
+/ @Author= "Doha"
+/ @Controller: CommentsController
+/ @Controller: Customer/CommentsController
+/ @Summary: I use this partial to post a comment in the need's page.
+/ It also contains a form which is a pop-up panel that appears with reporting a comment reasons (which appear as choices for the customer), when the customer press "Report" button
+/ @Button: "Report" it is added to a comment that does not belong to the customer commented himself, then it disappears when the customer reports once.
+
+
+- if @need.comments.size == 0
+  %div{:style => "width:350px"}
+    .alert.alert-alert
+      There are no comments to be displayed yet.
+- else
+
+  - for comment in @need.comments.asc('created_on')
+    -if !current_customer.nil? and !Customer.is_banned(current_customer.id) and comment.customer.id == current_customer.id
+      = button_to "x",comment,:method => :delete, :confirm => 'Are you sure?', :class=>"btn-small  btn-danger",:remote => true,:style => 'float:right;margin-right:20px;'
+    %h4
+     
+      =image_tag comment.customer.photo.url(:normal), :width =>'45px',:height =>'45px'
+      = comment.customer.name
+      = "says: "
+    %p{style: "margin-left:50px;"}
+      = comment.content
+      %br
+    %p= comment.created_on
+    - if @need.is_needer(current_customer)
+      = link_to image_tag("thumbs_up_icon.jpg", :width => "30px", :height => "30px"), like_comments_path(:comment => comment.id), :remote => true
+      = link_to "Like", like_comments_path(:comment => comment.id), :remote => true
+      = ":"
+      = comment.up_votes_count  
+      = "liked this."
+      = link_to image_tag("thumbs_down_icon.jpg", :width => "30px", :height => "30px"),dislike_comments_path(:comment => comment.id), :remote => true, :update => { :success => :comment, :failure => "error" }
+      = link_to "Dislike", dislike_comments_path(:comment => comment.id), :remote => true, :update => { :success => :comment, :failure => "error" }
+      = ":"
+      = comment.down_votes_count
+      = "disliked this."
+      - if current_customer.voted?(comment) == true
+        %p= link_to "undo like/dislike", unlike_comments_path(:comment => comment.id), :remote => true, :update => { :success => :comment, :failure => "error" }
+    -else
+      = image_tag("thumbs_up_icon.jpg", :width => "30px", :height => "30px")
+      = comment.up_votes_count
+      = "liked this."
+      = image_tag("thumbs_down_icon.jpg", :width => "30px", :height => "30px")
+      = comment.down_votes_count
+      = "disliked this."
+    %p{style: "float: right;"}
+    -if !current_customer.nil?
+      - if !Customer.is_banned(current_customer.id) 
+        - if comment.customer.id != current_customer.id
+          - if (comment.reported_comments.has_key?(current_customer.id.to_s)) == false && @need.is_needer(current_customer)
+            %p
+              %a.btn{"data-toggle" => "modal", :href => "#myModal2", :comment_id => comment.id, :onclick => "document.getElementById('comment_id').value = '" + comment.id.to_s+"';"} Report
+          
+    %hr{style: "clear: both;"}
+-if !current_customer.nil?
+  - if !Customer.is_banned(current_customer.id) && @need.is_needer(current_customer)
+    #newComment{:style => "width:350px;height:130px;background-color:#E8E8E8;"}
+      = form_for([@need, Comment.new], :remote => true) do |f|
+        %br
+        %p{:style => "margin-left:10px;"}
+          =image_tag current_customer.photo.url(:normal), :width =>'60px',:height =>'60px'
+          = f.text_area :content,:rows => "2", :id => "comment"
+        %p{:style => "float:right;margin-right:5px;"}= f.submit "Comment", :class =>"btn-normal btn-primary"
+/- if @need.comments.size > 0
+#myModal2.modal.hide.fade
+  .modal-header
+    %button.close{"data-dismiss" => "modal"} ×
+    %h3 Report Comment
+  .modal-body 
+    =form_tag({:controller => 'customer/comments', :action => 'report_comment'}, :need_id => @need.id) do
+      =radio_button_tag 'report_reason', 'Abuse Comment', :checked => true 
+      Abuse Comment 
+      %br 
+      =radio_button_tag 'report_reason', 'Spam', :checked => true
+      Spam
+      %br 
+      =radio_button_tag 'report_reason', 'Offensive Comment', :checked => true
+      Offensive Comment 
+      %br 
+      =radio_button_tag 'report_reason', 'Hate Speech', :checked => true  
+      Hate Speech 
+      %br
+      =hidden_field_tag :comment_id, params[:comment_id]
+      .modal-footer
+        =submit_tag "Submit",:class => 'btn-primary'

@@ -1,0 +1,33 @@
+%h1
+	Add a Category
+
+- i=1
+%table.table.table-striped
+	%thead
+		%tr
+			%th #
+			%th Name
+			%th Parent
+	%tbody
+		-aaa = Category.where(:name => "categories")		
+		- @categories.each do |admin|
+			%tr
+				%td= i
+				%td
+					%p= admin.name 
+				%td
+					
+					-par1 = Category.where(:id => admin.id)
+					-if(admin.name != "categories")
+						-par = Category.where(:id => admin.parent)					
+				-i = i+1					
+
+
+= form_for @category do |f|
+	%p
+		= f.label :name
+		= f.text_field :name
+		-cat = Category.all.collect {|p| [p.name, p.id]}
+		= f.select :parent_id, cat, :prompt => "select Parent Category"
+	%p
+		= f.submit 'Add'

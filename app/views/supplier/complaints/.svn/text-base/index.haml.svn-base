@@ -1,0 +1,50 @@
+/Author Omar Aly
+/shows all complaints sent by the user that are not deleted
+/Buttons: 1. Send a new complaint. 
+/          => on click, redirects the user to a new complaints template. 
+/         2. Problem solved, delete offer! button. 
+/         => on click, deletes the complaint. 
+#flash
+  %div{:style => "width:400px"}
+    - if flash[:notice]
+      .alert.alert-success
+        =flash[:notice]
+    - if flash[:error]
+      .alert.alert-error
+        =flash[:error]
+
+%h1 My Complaints
+%br
+%br
+-if supplier_signed_in?
+  -if current_supplier._type == 'Supplier'
+    %p{style:"font-size:20px;"}
+      %b= link_to 'New Complaint', new_supplier_complaint_path
+    = will_paginate @users, :container => false
+    -if @complaints.length>0
+      %table{:CELLPADDING => "4", :CELLSPACING => "3", :WIDTH => "50%"}
+        %tr
+          %th
+          %th
+          %th
+        - @complaints.each do |complaint|
+          %tr
+            %td
+              %h2
+                %b= complaint.subject
+            %td{align:'right'}
+              %h4= "submitted on: #{Get_Complaint_Date(complaint).to_formatted_s(:long_ordinal)}"
+          %tr
+            %td
+              = complaint.content
+          %table
+            %th
+          	
+              =button_to "Problem Solved, delete Offer" , updatedelete_supplier_complaints_path(:id => complaint.id), :class=>"btn-large  btn-danger", :confirm => "Are you sure you want to delete this complaint?"
+    -else
+      ="You don't have any complaints yet!"
+    %br
+  -else
+    ="You are not logged in as a Supplier, please log in again."
+-else
+  ="You are not logged in as a Supplier, please log in again."

@@ -1,0 +1,25 @@
+/@Author = Nisma El-Nayeb
+/@Summary = This partial displays comments made on a certain need.
+
+- if @need.comments.size == 0
+	%div{:style => "width:200px"}
+	.alert.alert-alert
+		There are no comments to be displayed yet.
+- else
+	- for comment in @need.comments
+		%br
+		%br
+		%h4
+			=image_tag comment.customer.photo.url(:normal), :width =>'60px',:height =>'60px'
+			= comment.customer.name
+			= "says: "
+		= comment.content
+		%p= comment.created_on
+		= image_tag("thumbs_up_icon.jpg", :width => "40px", :height => "40px")
+		= comment.up_votes_count
+		= "liked this."
+		= image_tag("thumbs_down_icon.jpg", :width => "40px", :height => "40px")
+		= comment.down_votes_count
+		= "disliked this."
+
+		

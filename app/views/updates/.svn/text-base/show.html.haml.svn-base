@@ -1,0 +1,7 @@
+%p#notice= notice
+%p
+	%b= @update.type
+
+= link_to 'Edit', edit_update_path(@update)
+\|
+= link_to 'Back', updates_path

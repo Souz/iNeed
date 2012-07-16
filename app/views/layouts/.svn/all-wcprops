@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/2616/trunk/iNeed/app/views/layouts
+END
+application.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/2616/trunk/iNeed/app/views/layouts/application.html.erb
+END
+cust_master.html.haml
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/2616/trunk/iNeed/app/views/layouts/cust_master.html.haml
+END
+supp_master.html.haml
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/2616/trunk/iNeed/app/views/layouts/supp_master.html.haml
+END
+admin.html.haml
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/2570/trunk/iNeed/app/views/layouts/admin.html.haml
+END
+home_master.html.haml
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/2616/trunk/iNeed/app/views/layouts/home_master.html.haml
+END

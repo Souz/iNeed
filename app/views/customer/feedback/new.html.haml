@@ -1,0 +1,37 @@
+/@Author: Nada Nasr
+/@Summary: customer's feedback form
+%h2{:style => "padding:2em"}
+  Feedback on 
+  = @supplier.name
+  for transaction
+  = @transaction.id
+%ol
+= form_for(@feedback, :url => {:action => "create"}) do |feedback_form|
+  %table.table.table-striped
+    - for i in 0..(@questions.size - 1)
+      %div
+        %tr
+          %td{:colspan => "5"} 
+            %li=@questions[i].content
+        %tr
+          %td{:width => "20%", :style => "text-align:center;"}
+            = radio_button_tag("answers[#{i}]", "1")
+            = label_tag(i, "Strongly Disagree")
+          %td{:width => "20%", :style => "text-align:center;"}
+            = radio_button_tag("answers[#{i}]", "2")
+            = label_tag(i, "Disagree")
+          %td{:width => "20%", :style => "text-align:center;"}
+            = radio_button_tag("answers[#{i}]", "3", true)
+            = label_tag(i, "Neutral")
+          %td{:width => "20%", :style => "text-align:center;"}
+            = radio_button_tag("answers[#{i}]", "4")
+            = label_tag(i, "Agree")
+          %td{:width => "20%", :style => "text-align:center;"}
+            = radio_button_tag("answers[#{i}]", "5")
+            = label_tag(i, "Strongly Agree")
+  %td
+    = feedback_form.label(:comment, "Add a comment (optional)")
+    = feedback_form.text_area :comment, :style => "width:70%;", :rows => 5
+  %td{:style => "text-align:center;"}
+    = feedback_form.submit "Submit Your Feedback", :class =>"btn-large btn-success", :style => "width:20%, align:center"
+  = feedback_form.hidden_field :transaction_id, :value => @transaction.id

@@ -1,0 +1,5 @@
+/@Author: Nourhan Aloush
+/@Summary: This renders the form to create new offer
+%h1 New offer
+
+= render 'form'

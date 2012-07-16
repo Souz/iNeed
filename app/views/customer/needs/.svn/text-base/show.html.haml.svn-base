@@ -1,0 +1,113 @@
+/@Author= "Marina Hani Charles"
+/@Summary= Their is a table containing the related needs, and the button for report need that is using bootswatch plugin'
+/@Author = Nisma el-Nayeb
+/@Author = Yousra Hazem
+/@Summary = This is the need's page for the customer. A need's details(name, picture, /description.. etc), the offers made on it, the comments made on it and similar needs are /displayed on this page along with buttons for iNeeding the need and reporting the need.
+/@Author = Karim Tharwat
+/@Summary = there is a form_tag that take the needed parameters for the subscribe method.
+- if @need.deleted == true
+	%div{:style => "width:280px"}
+		.alert.alert-error
+			This need has been deleted.
+
+- elsif current_customer != nil
+	#container{:style => "width:950px;margin:10px"}
+
+		.div{:style => "height:100px;width:400px;float:right;",:id => "#{@need.id}need_page"}
+			- if @banned_customer == false
+				= render 'need_form'
+
+		#header{:style => "height:80px;width:800;"}
+			%h1= @need.name
+			%h2= @need.category.name
+			
+		#spacereport{:style => "height:50px;width:1000px;float:left;"}
+			%br
+			- if @banned_customer == false
+				- if (@need.records.has_key?(current_customer.id.to_s)) == false && @need.customer_id!= current_customer.id
+					%p
+						%a.btn{"data-toggle" => "modal", :href => "#myModal", :class =>"btn-small btn-primary"} Report need
+
+					#myModal.modal.hide.fade/
+					.modal-header
+						%button.close{"data-dismiss" => "modal"} ×
+						%h3 Why do you want to report this need?
+					.modal-body
+						%p 
+
+						=form_tag("report_need", :need_id => @need.id) do
+		
+							%p
+							=radio_button_tag 'report', "Spam", :checked => true
+							Spam
+							%p
+							=radio_button_tag 'report', "Producted corrupted"
+							Producted corrupted
+							%p
+							=radio_button_tag 'report', "Product spoiled" 
+							Product spoiled
+							=hidden_field_tag :id, params[:id]
+							.modal-footer
+							
+								=submit_tag("Submit",:class => 'btn-primary')
+			
+		#desc{:style => "height:600px;width:450px;float:left;background:#E8E8E8;overflow:auto;"}
+			%p{:style => "margin-left:20px;margin-top:20px;"}
+				=image_tag @need.photo.url(:original), :width =>'150px',:height =>'200px'
+			%h3{:style => "margin-left:20px;"}
+				= "Description: "
+			%b{:style => "margin-left:20px;"}
+				= @need.description
+				/@Author = Yousra Hazem
+				/@summary = displays the quantity needed on this need in different locations
+				%div{:style => "margin-left:20px; margin-right:20px;"}
+					%table.table.table-striped
+						%tbody
+							- @need.num_of_needers_in_locations.each_key do |location|
+								-if @need.num_of_needers_in_locations[location] > 0
+									%tr
+										%td #{@need.num_of_needers_in_locations[location]} needers in #{location}
+
+				
+		#offers{:style => "height:600px;width:400px;float:right;overflow:auto;margin-right:20px;"}
+			= render "offers"
+
+		#similarneeds{:style => "float:right;margin-top:20px;margin-right:250px;"}
+			%h2= "Similar Needs:"
+
+			%table
+				- @listrelatedneeds.each do |need|
+					- if need != @need
+						%tr
+							%td=image_tag (need).photo.url(:normal), :width =>'60px',:height =>'60px'
+							%td
+								%b= link_to need.name ,customer_need_path(need)
+
+					- if @listrelatedneeds.length == 1
+						%td= 'No Similar Needs to be displayed'
+						%td
+						%td
+						%td
+						%td= link_to 'New Need', new_need_path
+
+
+		#comments{:style => "height:600px;width:450px;float:left;overflow:auto;margin-top:20px;"}
+			%h3= "Comments"
+			%hr{style: "clear: both;"}
+
+			#AllComments
+				= render 'comments/comments_partial'
+		#space{:style => "height:100px;width:1000;"}
+			%br
+
+
+
+			
+
+
+		
+		
+- elsif current_supplier != nil
+	%div{:style => "width:280px"}
+		.alert.alert-error
+			You are not signed in as a customer.

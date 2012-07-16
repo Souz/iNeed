@@ -1,0 +1,31 @@
+=form_for @need, :html => { :class => 'form-inline', :multipart => true}, :validate => true do |f|
+	/ if error messages exist ( created by validations in model exists ) display them, else render form fields
+	-if f.error_messages.length != 0  
+		%div{:style => "width:610px"} 
+			.alert.alert-error
+				=f.error_messages
+	.control-group
+		.controls
+			=f.label :Name
+			.control-group-error
+				.input
+					=f.text_field :name
+					%p.help-block Enter need's name here
+		.controls
+			=f.label :Description
+			.input
+				=f.text_area :description,:rows => "2"
+				%p.help-block Enter a brief description of your need
+		.controls
+			=f.label :Category
+			.input
+				=f.select :category_name,options_for_select(@categories), :prompt => "select one"
+				%p.help-block Select a category for your need
+		.controls
+			=f.label :Photo
+			.input
+				=f.file_field :photo
+				%p.help-block Please upload a photo of your need
+	.form-actions
+	%button.btn.btn-primary{:type => "submit"} Save changes
+	%button.btn{:type => "reset"} Cancel

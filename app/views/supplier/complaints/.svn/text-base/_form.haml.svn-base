@@ -1,0 +1,19 @@
+-if supplier_signed_in?
+  -if current_supplier._type == "Supplier"
+    = form_for @complaint do |m|
+      -if @complaint.errors.any?
+        #error_explanation
+          %h2= "#{pluralize(@complaint.errors.count, "error")} prohibited this complaint from being saved:"
+          %ul
+            - @complaint.errors.full_messages.each do |msg|
+              %li= msg
+      = m.label :subject
+      = m.text_field :subject, cols:"20",rows:"2"
+      = m.label :content
+      = m.text_area :content, cols:"20",rows:"2"
+      .actions
+        = m.submit 'Save'
+  -else
+    = "You are not logged in as a supplier, please try to login again."
+-else
+  = "You are not logged in as a supplier, please try to login again."

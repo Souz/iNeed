@@ -1,0 +1,16 @@
+= form_tag(suppliers_track_need_path, :method => 'post',:multipart => true) do
+  #content
+  %h1 Track 
+  %h5 Send me an update when quantity reaches: ?!
+  %table.config.list
+    %tr
+      %th Location 
+      %th Quantity Needed
+    %tr
+      %td= text_field_tag :loc ,'Enter location'
+      %td= text_field_tag :quan 
+      = hidden_field_tag :need_id,@need.id
+  .form-actions
+    =submit_tag "finish"
+    
+  = link_to 'Place a new offer', new_offer_path(:need_id => @need.id)

@@ -1,0 +1,17 @@
+%h1 Listing customer_offers
+
+%table
+  %tr
+    %th
+    %th
+    %th
+
+  - @customer_offers.each do |customer_offer|
+    %tr
+      %td= link_to 'Show', customer_offer
+      %td= link_to 'Edit', edit_customer_offer_path(customer_offer)
+      %td= link_to 'Destroy', customer_offer, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Offer', new_customer_offer_path

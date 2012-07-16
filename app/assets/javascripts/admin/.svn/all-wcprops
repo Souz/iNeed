@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/2331/trunk/iNeed/app/assets/javascripts/admin
+END
+needs.js.coffee
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/2330/trunk/iNeed/app/assets/javascripts/admin/needs.js.coffee
+END
+questions.js.coffee
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/2331/trunk/iNeed/app/assets/javascripts/admin/questions.js.coffee
+END
+comments.js.coffee
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/2330/trunk/iNeed/app/assets/javascripts/admin/comments.js.coffee
+END
+feedback.js.coffee
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/1281/trunk/iNeed/app/assets/javascripts/admin/feedback.js.coffee
+END
+customers.js.coffee
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/1675/trunk/iNeed/app/assets/javascripts/admin/customers.js.coffee
+END
+suppliers.js.coffee
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/2330/trunk/iNeed/app/assets/javascripts/admin/suppliers.js.coffee
+END
+users.js.coffee
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/2112/trunk/iNeed/app/assets/javascripts/admin/users.js.coffee
+END
+complaints.js.coffee
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/1697/trunk/iNeed/app/assets/javascripts/admin/complaints.js.coffee
+END
+categories.js.coffee
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/1281/trunk/iNeed/app/assets/javascripts/admin/categories.js.coffee
+END

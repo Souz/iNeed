@@ -1,0 +1,43 @@
+-if ( !@offerlist.empty? )&&( ((@offerlist[0]).num_of_subscribed_quantity * 1.0) != 0 )
+	%a.btn{"data-toggle" => "modal", :href => "#stat", :class =>"btn-large btn-success"} Show Statistics On Offers
+	#stat.modal.hide.fade{:style => "width:650px;height:550px;"}
+		.modal-header
+			%button.close{"data-dismiss" => "modal"} ×
+		.modal-body{:style => "width:650px;height:550px;"}
+			/Code For Showing the Statistics Chart by "Hazem El-Kilisly"
+			= high_chart("my_id", @chart)
+			/End Of code
+%h2= "Offers:"
+-if flash[:notice]
+	-if flash[:notice].include?'successfully'
+		%div.span3
+			.alert.alert-success
+				= flash[:notice]
+	-else
+		%div.span3
+			.alert.alert-error
+				= flash[:notice]
+%hr{style: "clear: both;"}
+- if @offers.size > 0
+	- for offer in @offers
+		- if offer.deleted != true
+			%h4= offer.supplier.name
+			%br
+			%p{:style => "color:#CC0000;font-size:30;"}
+				%b= "$ "
+				%b= offer.price
+			%p
+				%b= "Number of subscribtions: "
+				= offer.num_of_subscribed_quantity
+			- if  !Customer.is_banned(current_customer.id) && @need.is_needer(current_customer)
+				= form_tag("../../customer/offers/subscribe", :method => 'post',:remote => true) do
+					.control-group
+						=text_field_tag :quantity, nil, :placeholder => 'Enter quantity'
+						=hidden_field_tag  :need_id,@need.id
+						=hidden_field_tag  :offer_id,offer.id    
+					%button.btn.btn-primary{:type => "submit_tag"} Subscribe   
+			%hr{style: "clear: both;"}
+- else 
+	%div{:style => "width:280px"}
+		.alert.alert-alert
+			There are no offers to be displayed yet.

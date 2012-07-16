@@ -1,0 +1,14 @@
+%p#notice= notice
+
+Please keep this code as it is your ONLY way to get your subscribed need!
+%p
+  %b Here is your Code :
+  = @transaction.id
+%p
+  %b Done :
+  = @transaction.done
+
+/= link_to 'Edit', edit_transaction_path(@transaction)
+/\|
+= link_to 'Back', transactions_path 
+/link to my offers not tranactions path

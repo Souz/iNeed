@@ -1,0 +1,32 @@
+/this page shows the tracked needs and tracked categories
+.container-fluid
+  .row-fluid
+    .span8
+      %p 
+        %h2 Tracked Needs
+      %table.table.table-striped
+        %thead
+          %tr
+            %th
+            %th
+            %th
+            %th
+            %th
+            %th 
+
+        %tbody
+        =will_paginate @needs
+        -if @needs.length == 0
+          %td
+            .alert.alert-error
+              ='You have no Tracked needs yet!'
+        -else
+          -@needs.each do |need|
+            -@need = need
+            %tr{:id => need.id}
+              =render 'needs/need_widget'
+
+      %br
+      #iNeed{:style => "height:100px;width:250px;float:right;"}
+    .span4
+      = render "tracked_categories"

@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/2581/trunk/iNeed/features/needs
+END
+filter.feature
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/1798/trunk/iNeed/features/needs/filter.feature
+END
+delete_need.feature
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/2551/trunk/iNeed/features/needs/delete_need.feature
+END
+sort.feature
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/2581/trunk/iNeed/features/needs/sort.feature
+END
+report_need.feature
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/2242/trunk/iNeed/features/needs/report_need.feature
+END
+report_comment.feature
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/2542/trunk/iNeed/features/needs/report_comment.feature
+END

@@ -1,0 +1,88 @@
+/@Author = Nisma el-Nayeb
+/@Summary = This is the need's page for the supplier. A need's details(name, picture, /description.. etc), the offers made on it, the comments made on it and similar needs are /displayed on this page along with buttons for tracking and placing a new offer.
+- if current_supplier != nil
+	#container{:style => "width:950px;margin:10px"}
+		
+		.div{:style => "height:100px;width:400px;float:right;",:id => "#{@need.id}need_page"}
+			- if @banned_supplier == false
+				= render 'form3'
+				
+		#header{:style => "height:150px;width:800;"}
+			%h1= @need.name
+			%h2= @need.category.name
+			
+		/This div displays a need's picture, description and statistics along with a table that /displays the number of users according to location.
+		#desc{:style => "height:450px;width:450px;float:left;background:#E8E8E8;overflow:auto;"}
+			%p{:style => "margin-left:20px;margin-top:20px;"}
+				=image_tag @need.photo.url(:original), :width =>'150px',:height =>'200px'
+			%h3{:style => "margin-left:20px;"}
+				= "Description: "
+			%b{:style => "margin-left:20px;"}
+				= @need.description
+				%div{:style => "margin-left:10px; margin-right:10px;"}
+					%table.table.table-striped
+						%tbody
+							- @need.num_of_needers_in_locations.each_key do |key|
+								%tr
+									%td #{@need.num_of_needers_in_locations[key]} needers in #{key}
+
+		
+		/This div displays offers if there are any offers made(@offers.size>0).
+		#offers{:style => "height:600px;width:400px;float:right;overflow:auto;margin-right:20px;"}
+			-if ( !@offerlist.empty? )&&( ((@offerlist[0]).num_of_subscribed_quantity * 1.0) != 0 )
+				%a.btn{"data-toggle" => "modal", :href => "#stat", :class =>"btn-large btn-success"} Show Statistics On Offers
+				#stat.modal.hide.fade{:style => "width:650px;height:550px;"}
+					.modal-header
+						%button.close{"data-dismiss" => "modal"} ×	
+					.modal-body{:style => "width:650px;height:550px;"}
+						/Code For Showing the Statistics Chart by "Hazem El-Kilisly"
+						= high_chart("my_id", @chart)
+						/End Of code
+			%h2= "Offers:"
+			%hr{style: "clear: both;"}
+			- if @offers.size > 0
+				- for offer in @offers
+					- if offer.deleted != true
+						%h4= offer.supplier.name
+						%br
+						%p{:style => "color:#CC0000;font-size:30;"}
+							%b= "$ "
+							%b= offer.price
+						%p
+							%b= "Number of people subscribed: "
+							= offer.num_of_subscribed_quantity
+						%hr{style: "clear: both;"}
+			- else 
+				%div{:style => "width:280px"}
+					.alert.alert-alert
+						There are no offers to be displayed yet.			
+
+		/This div renders "comments_partial".
+		#comments{:style => "height:600px;width:450px;float:left;overflow:auto;margin-top:20px;"}
+			%h3= "Comments"
+			%hr{style: "clear: both;"}
+			= render 'comments_partial'
+
+		/This div is where usually the "report need" button is but here is just serves to have a /consistent layout.
+		#spacereport{:style => "height:100px;width:1000px;float:left;"}
+
+		/This div displays similar needs.
+		#similarneeds{:style => "margin-top:0px;margin-left:500px;"}
+			%h2= "Similar Needs:"
+
+			%table
+				- @listrelatedneeds.each do |need|
+					- if need != @need
+						%tr
+							%td=image_tag (need).photo.url(:normal), :width =>'60px',:height =>'60px'
+							%td
+								%b=link_to need.name , supplier_need_path(need)
+						
+					- if @listrelatedneeds.length == 1
+						%td= 'No Similar Needs to be displayed'
+
+
+- elsif current_customer != nil
+	%div{:style => "width:280px"}
+		.alert.alert-error
+			You are not signed in as a supplier.

@@ -1,0 +1,7 @@
+/@Author = Mirna Elbendary
+/text is displayed in case of no hot needs
+%div{:align => "center", :style => "color:#00FF00; background:blue; font-size:40px"}
+  %Font{:color => "White", :size => "40px"}
+    %br
+    %p There are no hot needs at the moment. Please try again later.
+    %br

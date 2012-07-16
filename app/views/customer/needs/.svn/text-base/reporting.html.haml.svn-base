@@ -1,0 +1,16 @@
+Why do you want to report this need?
+=form_tag("report_need", :need_id => @need.id) do
+	
+	%p
+	=radio_button_tag 'report', "spam", :checked => true
+	spam
+	%p
+	=radio_button_tag 'report', "producted_corrupted"
+	producted_corrupted
+	%p
+	=radio_button_tag 'report', "product_spoiled" 
+	product_spoiled
+	
+	=hidden_field_tag :id, params[:need_id]
+	=submit_tag("Submit")
+	

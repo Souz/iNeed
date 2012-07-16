@@ -1,0 +1,6 @@
+%p#notice= notice
+
+= form_tag(insert_code_supplier_transactions_path, :method => 'get') do 
+  =label_tag :code_value
+  =text_field_tag :code, params[:code]
+  =submit_tag 'insert'

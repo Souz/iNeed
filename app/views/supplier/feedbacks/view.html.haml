@@ -1,0 +1,29 @@
+/@author: Sarah El-Sherbiny
+/@summary: view of feedback comments for a supplier
+%h3 Feedbacks
+%table.table.table-condensed.table-striped
+	-if @feedbacks.empty?
+		%div{:style => "width:290px"}
+			.alert.alert-error
+				='There are no Feedback comments'
+	-else
+		-@feedbacks.each do |feedback|
+			%table.table.table-condensed.table-striped
+				-if !(feedback.reported)
+					%tr
+						-transaction = Transaction.find(feedback.transaction_id)
+						-offer = Offer.find(transaction.offer_id)
+						-need = Need.find(offer.need_id)
+						%td="Offer on:"
+						%td="#{need.name}"
+					%tr
+						%td="Feedback comment: "
+						%td="#{feedback.comment}"
+					-if !(current_supplier.nil?)
+						%tr
+							%td=button_to "report", report_supplier_feedbacks_path(:feedback_id => feedback.id)
+							%td{:align => "right"}
+					-elsif feedback.reported
+						%tr
+							%td
+								%b="Reported"

@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/2615/trunk/iNeed/app/views/customer/categories
+END
+show.js.erb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/2615/trunk/iNeed/app/views/customer/categories/show.js.erb
+END
+_show.html.haml
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/2615/trunk/iNeed/app/views/customer/categories/_show.html.haml
+END
+show.html.haml
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/2615/trunk/iNeed/app/views/customer/categories/show.html.haml
+END

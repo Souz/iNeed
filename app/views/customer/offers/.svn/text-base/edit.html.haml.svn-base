@@ -1,0 +1,7 @@
+%h1 Editing customer_offer
+
+= render 'form'
+
+= link_to 'Show', @customer_offer
+\|
+= link_to 'Back', customer_offers_path

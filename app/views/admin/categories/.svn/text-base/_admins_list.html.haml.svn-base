@@ -1,0 +1,28 @@
+- i=1
+%table.table.table-striped
+	%thead
+		%tr
+			%th #
+			%th Name
+			%th Email
+	%tbody
+		-if(@admins.empty?)
+			%tr
+				%td				
+					%p No Admins at the moment.
+		-else
+			- @admins.each do |admin|
+				%tr
+					%td= i
+					%td
+						%p= admin.name
+					%td
+						%p= admin.email 
+					-if(current_admin.isSuperAdmin == true && current_admin.email != admin.email)
+						%td 
+							= button_to 'Delete', admin_path(admin), :method => 'delete', :confirm => 'Are you sure you want to delete this admin?', :admin_id => admin.id, :method => :delete
+					-else
+						%td
+							%p
+					-i = i+1
+= will_paginate @admins

@@ -1,0 +1,34 @@
+/@author: Nourhan Azab
+/@summary: a simple form_tag for the sign in the home page
+%div.offset3
+  %h2 Welcome Back!
+  %div.span4
+    %table.table.table-bordered
+      %tr
+        %td{:colspan =>2}
+          %br
+          = form_tag '#', :method => :post, :id => 'sign_in_form' do
+            =label_tag 'email'
+            = text_field_tag 'supplier[email]'
+            = hidden_field_tag 'customer[email]'
+            %br
+            =label_tag 'password'
+            = password_field_tag 'supplier[password]'
+            = hidden_field_tag 'customer[password]'
+            %br
+            =label_tag 'Sign in as'
+            =select_tag 'type',options_for_select(["Customer","Supplier"])
+            %br
+            = check_box_tag 'remember_me'
+            = label_tag 'remember_me', 'Remember me'
+            %button#log_in.button{:type => "submit",:method=>"post"} Sign in
+      %tr
+        %td
+          %h4 New Customer? 
+          =button_to "Register Now!" ,"customers/sign_up", :class=>"btn-large  btn-danger", :method=>"get"
+          %a.auth_provider{:href => "../auth/facebook"}
+            = image_tag "fb.png",:size => "180x350",  :alt => "Facebook"
+        %td
+          %h4 New Supplier? 
+          =button_to "Register Now!" ,"suppliers/sign_up", :class=>"btn-large  btn-danger", :method=>"get"
+          

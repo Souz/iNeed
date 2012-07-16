@@ -1,0 +1,26 @@
+/@Author = Tarek Mehrez, Nada Nasr
+/@Summary: view the passed object from banned view in a form of a table with the user's name,email and reason for banning
+= form_tag '#', :method => :get, :id => 'users_form' do
+
+  %button#email.button{:type => "submit", :disabled => "disabled", :class => "btn-primary btn-large"}
+    Email
+  %button#unban.button{:type => "submit", :disabled => "disabled", :class => "btn-primary btn-large"}
+    Unban
+  %table.table.table-striped
+    %thead
+      %th
+      %th Name
+      %th Email
+      %th Reason For Banning
+    %tbody	
+
+      -@banned_users.each do |banned_users|
+        %td 
+          = check_box_tag "user_ids[]", banned_users.id 
+        %td
+          %p= banned_users.name
+        %td
+          %p= banned_users.email
+        %td
+          %p= banned_users.reason_for_warning_or_banning
+        %tr

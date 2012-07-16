@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/2616/trunk/iNeed/app/views/customer/needs
+END
+_hot_stuff.html.haml
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/2615/trunk/iNeed/app/views/customer/needs/_hot_stuff.html.haml
+END
+un_need.js.erb
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/2616/trunk/iNeed/app/views/customer/needs/un_need.js.erb
+END
+_offers.html.haml
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/2616/trunk/iNeed/app/views/customer/needs/_offers.html.haml
+END
+my_needs.js.erb
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/2611/trunk/iNeed/app/views/customer/needs/my_needs.js.erb
+END
+_need_info.html.haml
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/2616/trunk/iNeed/app/views/customer/needs/_need_info.html.haml
+END
+_my_needs.html.haml
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/2611/trunk/iNeed/app/views/customer/needs/_my_needs.html.haml
+END
+my_needs.html.haml
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/2611/trunk/iNeed/app/views/customer/needs/my_needs.html.haml
+END
+_need_form.haml
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/2616/trunk/iNeed/app/views/customer/needs/_need_form.haml
+END
+show.html.haml
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/2616/trunk/iNeed/app/views/customer/needs/show.html.haml
+END
+reporting.html.haml
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/1361/trunk/iNeed/app/views/customer/needs/reporting.html.haml
+END
+_unsubscribe_form.html.haml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/2405/trunk/iNeed/app/views/customer/needs/_unsubscribe_form.html.haml
+END
+iNeed.js.erb
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/2616/trunk/iNeed/app/views/customer/needs/iNeed.js.erb
+END

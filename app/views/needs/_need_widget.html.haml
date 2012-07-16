@@ -1,0 +1,22 @@
+%td=image_tag @need.photo.url(:normal), :width =>'80px',:height =>'80px'
+%td
+	-if customer_signed_in?
+		%h3= link_to @need.name,customer_need_path(@need.id.to_s)
+		-if @need.description.length < 40
+			%h6= @need.description
+		-else
+			%h6= @need.description[0,40]+'...'
+		%h5= 'Total Needers: '+@need.total_needers.to_s
+
+	-else
+		-if supplier_signed_in?
+			%h3= link_to @need.name,supplier_need_path(@need.id.to_s)
+		-else
+			%h3= link_to @need.name,need_path(@need.id.to_s)
+		%h4= 'Total Needers: '+@need.total_needers.to_s	
+	%td	
+		-if customer_signed_in?
+			=render 'customer/needs/need_form'
+		-else
+			-if supplier_signed_in?
+				=render 'supplier/needs/form3'

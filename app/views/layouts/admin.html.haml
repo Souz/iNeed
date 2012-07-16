@@ -1,0 +1,111 @@
+/@Author= Alaa Shafaee
+/@Summary= -This is the master page for the admin. It adds a navigation side bar menu, iNeed logo and a dropdown to log out.
+/          -The items in the side menu are active according to the page visited.
+/          -It does not display the content of the page in case the admin is not logged in. It displays a message with the 
+/           proper link in case the admin is not.
+/          -The style sheet is set to "application.html.erb" which contains all the bootswatch importing statments.
+
+%head
+  = stylesheet_link_tag "application", "jquery_ui"
+  %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}/
+  %title iNeed
+  :css
+    #content{
+    position:absolute;
+    overflow: hidden;
+    width:100%;
+    }
+    #left_content{
+    margin:33px 10px 0 0;
+    float: left;
+    width: 260px;
+    bottom: 100px;
+    }
+    
+    #middle_content{
+    overflow: hidden;
+    margin-right: 100px;
+    }
+  %meta{:content => "text/html;.\r\ncharset=iso-8859-1", "http-equiv" => "Content-Type"}/
+  %meta{:content => "en-us", "http-equiv" => "Content-Language"}/
+  %title Admin@ineed
+  
+  = javascript_include_tag "application"
+  = stylesheet_link_tag "application","icons"
+
+  .navbar.navbar-fixed-top
+    .navbar-inner
+      .container-fluid
+        /logo at top-left
+        %a.brand{:href => "#"} iNeed
+        -if admin_signed_in?
+          / drop down containing link to sign-out
+          .btn-group.pull-right
+            %a.btn.dropdown-toggle{"data-toggle" => "dropdown", :href => "#",:style => "width:145px;"}
+              %i.icon-user
+              = current_admin.name
+              %span.caret
+            %ul.dropdown-menu
+              %li.divider
+              %li
+                =link_to "Sign out", destroy_admin_session_path, :method => :delete
+          / top navigation bar
+
+
+  #content
+    #left_content
+      -if(admin_signed_in?)
+        %table
+          %tr
+            %td
+              %ul.nav.nav-pills.nav-stacked
+                - if url_for == "/admin/suppliers"
+                  %li.active
+                    %a{:href => "/admin/suppliers"} Suppliers
+                -else
+                  %li
+                    %a{:href => "/admin/suppliers"} Suppliers
+                - if url_for == "/admin/users/banned"
+                  %li.active
+                    %a{:href => "/admin/users/banned"} Banned users
+                -else
+                  %li
+                    %a{:href => "/admin/users/banned"} Banned users
+                -if url_for =="/admins/reported"
+                  %li.active
+                    %a{:href => "/admins/reported"} Reported needs and comments
+                -else
+                  %li
+                    %a{:href => "/admins/reported"} Reported needs and comments
+                -if url_for =="/admins"
+                  %li.active
+                    %a{:href => "/admins"} Admins
+                -else
+                  %li
+                    %a{:href => "/admins"} Admins
+                - if url_for == "/admin/categories"
+                  %li.active
+                    %a{:href => "/admin/categories"} Categories
+                -else
+                  %li
+                    %a{:href => "/admin/categories"} Categories
+                -if url_for =="/admin/complaints"
+                  %li.active
+                    %a{:href => "/admin/complaints"} Supplier complaints
+                -else
+                  %li
+                    %a{:href => "/admin/complaints"} Supplier complaints
+                -if url_for =="/admin/questions"                
+                  %li.active
+                    %a{:href => "/admin/questions"} Feedback
+                -else
+                  %li
+                    %a{:href => "/admin/questions"} Feedback
+
+
+    #middle_content{:float => "left"}
+      -if(admin_signed_in?)
+        = yield
+      -else
+        %h3 You are currently signed out. Please sign in to view this page.
+        %a{:href => "/admins/sign_in"} Sign in here

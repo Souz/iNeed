@@ -1,0 +1,10 @@
+%h1 New update
+= form_for @update do |f|
+	%p
+	= f.label :Type
+	= f.text_field :type
+	%p
+	= f.submit 'Save'
+
+
+= link_to 'Back', updates_path

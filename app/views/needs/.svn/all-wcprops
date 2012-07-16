@@ -1,0 +1,125 @@
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/2616/trunk/iNeed/app/views/needs
+END
+_index.html.haml
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/2615/trunk/iNeed/app/views/needs/_index.html.haml
+END
+_comments_partial.html.haml
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/2182/trunk/iNeed/app/views/needs/_comments_partial.html.haml
+END
+reportingComments.haml
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/572/trunk/iNeed/app/views/needs/reportingComments.haml
+END
+_filter.html.haml
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/2616/trunk/iNeed/app/views/needs/_filter.html.haml
+END
+filter.js.erb
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/2608/trunk/iNeed/app/views/needs/filter.js.erb
+END
+hot_needs_supplier.haml
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/1360/trunk/iNeed/app/views/needs/hot_needs_supplier.haml
+END
+show.html.haml
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/2616/trunk/iNeed/app/views/needs/show.html.haml
+END
+index.js.erb
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/2595/trunk/iNeed/app/views/needs/index.js.erb
+END
+new.html.haml
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/467/trunk/iNeed/app/views/needs/new.html.haml
+END
+_form.html.haml
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/2030/trunk/iNeed/app/views/needs/_form.html.haml
+END
+search.html.haml
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/2616/trunk/iNeed/app/views/needs/search.html.haml
+END
+search.js.erb
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/2611/trunk/iNeed/app/views/needs/search.js.erb
+END
+_no_hot_needs.haml
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/1359/trunk/iNeed/app/views/needs/_no_hot_needs.haml
+END
+_hot_needs.haml
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/1477/trunk/iNeed/app/views/needs/_hot_needs.haml
+END
+_need_form.html.haml
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/2615/trunk/iNeed/app/views/needs/_need_form.html.haml
+END
+reporting.html.haml
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/1296/trunk/iNeed/app/views/needs/reporting.html.haml
+END
+_need_widget.html.haml
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/2616/trunk/iNeed/app/views/needs/_need_widget.html.haml
+END
+_form2.html.haml
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/1093/trunk/iNeed/app/views/needs/_form2.html.haml
+END
+_form3.html.haml
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/1254/trunk/iNeed/app/views/needs/_form3.html.haml
+END
+index.html.haml
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/2616/trunk/iNeed/app/views/needs/index.html.haml
+END

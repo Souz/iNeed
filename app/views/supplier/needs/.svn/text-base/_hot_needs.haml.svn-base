@@ -1,0 +1,40 @@
+/@Author Mirna Elbendary
+/I displayed all info regarding needs,the number,the photo of need,
+/the name of need, the total number of needers
+-i = 1
+-count = 0
+
+%table.table.table-striped
+  %thead
+    %tr
+
+    -@needs.each do |need|
+      /%td= i
+      %tr
+        %td
+          %h3= i
+          -i = i+1
+        %td= image_tag need.photo.url(:normal),:width =>'80px',:height =>'80px'
+        %td
+          %h3= link_to need.name,supplier_need_path(need.id.to_s)
+          %h4= 'Total Needers: '+need.total_needers.to_s
+        %td 
+          %br
+          -if current_supplier.notify_array.empty?
+            = button_to "Notify me", notify_view_supplier_needs_path(:need_id => need.id, :supplier_id => current_supplier.id)
+          -else 
+            -current_supplier.notify_array.each do |location_quantity|
+              -if (location_quantity.include? need.id)
+                = button_to "Unnotify", unnotify_supplier_needs_path(:need_id => need.id, :supplier_id => current_supplier.id)
+              -else
+                = button_to "Notify me", notify_view_supplier_needs_path(:need_id => need.id, :supplier_id => current_supplier.id)         
+        %td
+          =form_tag new_offer_path,:method => 'get'  do
+            =hidden_field_tag :need_id,need.id
+            =submit_tag 'New Offer',:class => 'btn-success btn-large'
+          -if (current_supplier.needs.include? need)
+            = button_to "UnTrack", untrack_supplier_needs_path(:need_id => need.id),:class => 'btn-danger btn-large'
+          -else
+            = button_to "Track", track_supplier_needs_path(:need_id => need.id),:class => 'btn-primary btn-large'
+=will_paginate @needs
+

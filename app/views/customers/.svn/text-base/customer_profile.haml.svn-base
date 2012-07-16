@@ -1,0 +1,17 @@
+- if @customer
+	%h1
+		Customer Profile for #{@customer.Name}
+	%p
+		e-mail: #{@customer.Email}
+	%p
+		Phone: #{@customer.Phone}
+	%p
+		Address: #{@customer.Address}
+	%p
+		Location: #{@customer.Location}
+	%p
+		%file_field :photo
+	%p.help-block Edit your photo	
+- else
+	%h1
+		No User Profile for: #{@customer}

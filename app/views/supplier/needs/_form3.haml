@@ -1,0 +1,7 @@
+=form_tag new_offer_path,:method => 'get'  do
+	=hidden_field_tag :need_id,@need.id
+	=submit_tag 'New Offer',:class => 'btn-success btn-large'
+-if (current_supplier.needs.include? @need)
+	= button_to "UnTrack", untrack_supplier_needs_path(:need_id => @need.id),:class => 'btn-danger btn-large',:remote => true
+-else
+	= button_to "Track", track_supplier_needs_path(:need_id => @need.id),:class => 'btn-primary btn-large',:remote => true

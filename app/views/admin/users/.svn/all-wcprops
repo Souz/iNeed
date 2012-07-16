@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/2467/trunk/iNeed/app/views/admin/users
+END
+banned.html.haml
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/2467/trunk/iNeed/app/views/admin/users/banned.html.haml
+END
+_table.html.haml
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/2467/trunk/iNeed/app/views/admin/users/_table.html.haml
+END
